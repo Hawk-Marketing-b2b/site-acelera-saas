@@ -55,53 +55,53 @@ export const Route = createFileRoute("/inbound-marketing")({
 });
 
 const problems = [
-  { title: "Tráfego sem conversão", desc: "Visitantes chegam, mas não viram leads — falta caminho até o produto." },
-  { title: "Funil não estruturado", desc: "Sem etapas claras de topo, meio e fundo, leads se perdem ao longo da jornada." },
-  { title: "Ausência de estratégia de conteúdo", desc: "Posts e materiais isolados que não respondem dúvidas reais do ICP." },
-  { title: "Leads desqualificados", desc: "Volume alto, mas baixa aderência ao perfil — o time de vendas perde tempo." },
+  "Tráfego sem conversão",
+  "Falta de um funil estruturado",
+  "Ausência de estratégia de conteúdo",
+  "Leads desqualificados",
 ];
 
 const services = [
-  { icon: Target, title: "Planejamento estratégico", desc: "ICP, jornada de compra, ofertas e metas claras antes da execução." },
-  { icon: Search, title: "SEO e conteúdo", desc: "Estratégia de palavras-chave, clusters de tópicos e produção otimizada." },
-  { icon: Layout, title: "Landing pages de conversão", desc: "Páginas focadas em CRO, com copy e UX desenhadas para gerar leads." },
-  { icon: Zap, title: "Automação de marketing", desc: "Fluxos de nutrição, scoring e segmentação para acelerar o ciclo de venda." },
-  { icon: Database, title: "Integração com CRM", desc: "Marketing e vendas conectados, com dados confiáveis ponta a ponta." },
+  { icon: Target, title: "Planejamento estratégico" },
+  { icon: Search, title: "SEO e conteúdo" },
+  { icon: Layout, title: "Criação de landing pages" },
+  { icon: Zap, title: "Automação de marketing" },
+  { icon: Database, title: "Integração com CRM" },
 ];
 
 const strategies = [
-  { icon: PenTool, title: "Conteúdo otimizado para SEO", desc: "Materiais que ranqueiam para termos de alta intenção do seu mercado." },
-  { icon: Workflow, title: "Funis de conversão", desc: "Topo, meio e fundo orquestrados para mover o lead até a decisão." },
-  { icon: Users, title: "Nutrição automatizada", desc: "E-mails e cadências que educam e qualificam sem esforço manual." },
-  { icon: BarChart3, title: "Análise de performance", desc: "Métricas, testes e melhorias contínuas em cada etapa do funil." },
+  { icon: PenTool, title: "Produção de conteúdo otimizado para SEO" },
+  { icon: Workflow, title: "Criação de funis de conversão" },
+  { icon: Users, title: "Automação de nutrição de leads" },
+  { icon: BarChart3, title: "Análise contínua de performance" },
 ];
 
 const steps = [
-  { n: "01", title: "Diagnóstico", desc: "Análise do funil atual, ICP, concorrência, ativos digitais e maturidade do time." },
-  { n: "02", title: "Planejamento", desc: "Estratégia de conteúdo, SEO, ofertas, automações e metas mensuráveis." },
-  { n: "03", title: "Execução", desc: "Produção, publicação, landing pages, automações e integração com CRM." },
-  { n: "04", title: "Otimização", desc: "Análise contínua de dados, testes A/B e melhorias para escalar resultados." },
+  { n: "01", title: "Diagnóstico" },
+  { n: "02", title: "Planejamento" },
+  { n: "03", title: "Execução" },
+  { n: "04", title: "Otimização" },
 ];
 
 const results = [
-  { icon: TrendingUp, title: "Aumento de leads qualificados", desc: "Mais oportunidades aderentes ao ICP entrando no funil todo mês." },
-  { icon: Target, title: "Melhora na conversão", desc: "Taxas de conversão maiores em cada etapa do funil de marketing e vendas." },
-  { icon: BarChart3, title: "Redução do CAC", desc: "Menor custo por aquisição com canais orgânicos previsíveis e escaláveis." },
-  { icon: Zap, title: "Crescimento previsível", desc: "Pipeline construído com base em dados, não em picos de mídia paga." },
+  { icon: TrendingUp, title: "Aumento de leads qualificados" },
+  { icon: Target, title: "Melhora na conversão" },
+  { icon: BarChart3, title: "Redução do CAC" },
+  { icon: Zap, title: "Crescimento previsível" },
 ];
 
 const faqs = [
   {
     q: "Inbound marketing funciona para empresas SaaS?",
-    a: "Sim. O inbound marketing é especialmente eficiente para SaaS, pois educa o público, gera demanda qualificada e apoia ciclos de venda mais longos, característicos de produtos B2B.",
+    a: "Sim. O inbound marketing é especialmente eficiente para SaaS, pois educa o público, gera demanda qualificada e apoia ciclos de venda mais longos.",
   },
   {
     q: "Quanto tempo leva para gerar leads com inbound?",
-    a: "Os primeiros resultados costumam aparecer entre 3 e 6 meses, com crescimento consistente ao longo do tempo conforme o conteúdo ganha autoridade e o funil amadurece.",
+    a: "Os primeiros resultados costumam aparecer entre 3 e 6 meses, com crescimento consistente ao longo do tempo.",
   },
   {
     q: "Preciso produzir muito conteúdo para ter resultado?",
-    a: "Não necessariamente. O mais importante é ter consistência e estratégia, com conteúdos focados no seu público ideal e nas dores reais que o seu produto resolve.",
+    a: "Não necessariamente. O mais importante é ter consistência e estratégia, com conteúdos focados no seu público ideal.",
   },
 ];
 
