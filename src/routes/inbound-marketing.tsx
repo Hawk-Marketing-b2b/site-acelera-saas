@@ -203,17 +203,14 @@ function InboundMarketingPage() {
 
           <div className="mt-14 grid gap-6 md:grid-cols-2">
             {problems.map((p) => (
-              <div key={p.title} className="card-glass rounded-2xl p-7">
-                <div className="flex items-start gap-4">
+              <div key={p} className="card-glass rounded-2xl p-7">
+                <div className="flex items-center gap-4">
                   <div className="grid size-10 shrink-0 place-items-center rounded-lg bg-destructive/15 text-destructive">
                     <FileSearch className="size-5" />
                   </div>
-                  <div>
-                    <h3 className="font-display text-lg font-semibold text-foreground">
-                      {p.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-                  </div>
+                  <h3 className="font-display text-base font-semibold text-foreground md:text-lg">
+                    {p}
+                  </h3>
                 </div>
               </div>
             ))}
