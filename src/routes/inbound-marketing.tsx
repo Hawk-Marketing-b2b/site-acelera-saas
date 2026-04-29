@@ -308,7 +308,7 @@ function InboundMarketingPage() {
                 <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
                   {s.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                
                 {i < steps.length - 1 && (
                   <ChevronRight className="absolute right-3 top-1/2 hidden size-5 -translate-y-1/2 text-primary/50 lg:block" />
                 )}
