@@ -177,12 +177,11 @@ function InboundMarketingPage() {
               <p>
                 Inbound marketing é uma estratégia focada em{" "}
                 <span className="text-foreground">atrair, engajar e converter clientes</span> por
-                meio de conteúdo relevante ao longo de toda a jornada de compra.
+                meio de conteúdo relevante ao longo da jornada de compra.
               </p>
               <p>
                 Para empresas de tecnologia, isso significa gerar leads qualificados de forma
-                contínua e reduzir a dependência de mídia paga — construindo um ativo de marketing
-                que cresce com o tempo.
+                contínua e reduzir a dependência de mídia paga.
               </p>
             </div>
           </div>
