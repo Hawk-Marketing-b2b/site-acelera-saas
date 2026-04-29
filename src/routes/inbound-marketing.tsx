@@ -340,7 +340,7 @@ function InboundMarketingPage() {
                 <h3 className="mt-5 font-display text-base font-semibold text-foreground">
                   {r.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{r.desc}</p>
+                
               </div>
             ))}
           </div>
