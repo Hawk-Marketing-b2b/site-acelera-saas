@@ -123,10 +123,10 @@ function InboundMarketingPage() {
           </div>
 
           <h1
-            className="animate-fade-up mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl"
+            className="animate-fade-up mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight heading-gradient-animated md:text-6xl lg:text-7xl"
             style={{ animationDelay: "0.05s" }}
           >
-            Agência de <span className="heading-gradient-animated">Inbound Marketing</span>
+            Agência de Inbound Marketing
             <br className="hidden md:block" /> para SaaS
           </h1>
 
