@@ -32,7 +32,7 @@ export function SectionHeading({
       )}
       <Tag
         className={cn(
-          "font-display font-extrabold leading-[1.1] tracking-tight text-foreground",
+          "font-display font-extrabold leading-[1.1] tracking-tight heading-gradient-animated",
           eyebrow && "mt-5",
           Tag === "h2" ? "text-3xl md:text-4xl lg:text-5xl" : "text-2xl md:text-3xl",
         )}
