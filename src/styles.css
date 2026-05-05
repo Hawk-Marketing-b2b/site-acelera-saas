@@ -210,4 +210,80 @@
   .animate-subtle-pulse {
     animation: subtle-pulse 3s ease-in-out infinite;
   }
+
+  /* Scroll reveal animations */
+  .scroll-reveal,
+  .scroll-reveal-left,
+  .scroll-reveal-right,
+  .scroll-reveal-scale {
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal {
+    transform: translateY(40px);
+  }
+  .scroll-reveal-left {
+    transform: translateX(-40px);
+  }
+  .scroll-reveal-right {
+    transform: translateX(40px);
+  }
+  .scroll-reveal-scale {
+    transform: scale(0.92);
+  }
+
+  .scroll-reveal.in-view,
+  .scroll-reveal-left.in-view,
+  .scroll-reveal-right.in-view,
+  .scroll-reveal-scale.in-view {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Shimmer for heading gradient */
+  @keyframes shimmer {
+    0% {
+      background-position: 0% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+  .heading-gradient-animated {
+    background: var(--heading-gradient);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+
+  /* Glow pulse for CTA cards */
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 40px -10px oklch(0.62 0.24 300 / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 80px -10px oklch(0.62 0.24 300 / 0.55);
+    }
+  }
+  .animate-glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
 }

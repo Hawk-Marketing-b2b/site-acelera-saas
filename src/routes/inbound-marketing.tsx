@@ -20,6 +20,7 @@ import { Footer } from "@/components/site/Footer";
 import { CTAButton } from "@/components/site/CTAButton";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { BackgroundFx } from "@/components/site/BackgroundFx";
+import { ScrollReveal } from "@/hooks/use-scroll-animation";
 import {
   Accordion,
   AccordionContent,
@@ -125,7 +126,7 @@ function InboundMarketingPage() {
             className="animate-fade-up mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl"
             style={{ animationDelay: "0.05s" }}
           >
-            Agência de <span className="heading-gradient">Inbound Marketing</span>
+            Agência de <span className="heading-gradient-animated">Inbound Marketing</span>
             <br className="hidden md:block" /> para SaaS
           </h1>
 
@@ -151,7 +152,7 @@ function InboundMarketingPage() {
             className="animate-fade-up mt-16 flex items-center justify-center gap-2 text-xs text-muted-foreground"
             style={{ animationDelay: "0.25s" }}
           >
-            <ArrowDown className="size-3 animate-subtle-pulse" />
+            <ArrowDown className="size-3 animate-float" />
             Como o inbound transforma seu marketing
           </div>
         </div>
@@ -161,7 +162,7 @@ function InboundMarketingPage() {
       <section className="relative px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <div className="grid items-start gap-12 md:grid-cols-12">
-            <div className="md:col-span-5">
+            <ScrollReveal className="md:col-span-5" direction="left">
               <SectionHeading
                 eyebrow="O conceito"
                 align="left"
@@ -172,8 +173,8 @@ function InboundMarketingPage() {
                   </>
                 }
               />
-            </div>
-            <div className="space-y-5 text-base leading-relaxed text-muted-foreground md:col-span-7 md:text-lg">
+            </ScrollReveal>
+            <ScrollReveal className="space-y-5 text-base leading-relaxed text-muted-foreground md:col-span-7 md:text-lg" direction="right" delay={150}>
               <p>
                 Inbound marketing é uma estratégia focada em{" "}
                 <span className="text-foreground">atrair, engajar e converter clientes</span> por
@@ -183,7 +184,7 @@ function InboundMarketingPage() {
                 Para empresas de tecnologia, isso significa gerar leads qualificados de forma
                 contínua e reduzir a dependência de mídia paga.
               </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -191,64 +192,71 @@ function InboundMarketingPage() {
       {/* PROBLEMAS */}
       <section className="relative bg-muted/20 px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <SectionHeading
-            eyebrow="Diagnóstico"
-            title={
-              <>
-                Por que sua empresa <span className="text-gradient">não gera leads qualificados</span> hoje
-              </>
-            }
-            description="Antes de produzir conteúdo, é preciso entender o que está travando o funil. Os bloqueios mais comuns que encontramos em SaaS B2B:"
-          />
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Diagnóstico"
+              title={
+                <>
+                  Por que sua empresa <span className="text-gradient">não gera leads qualificados</span> hoje
+                </>
+              }
+              description="Antes de produzir conteúdo, é preciso entender o que está travando o funil. Os bloqueios mais comuns que encontramos em SaaS B2B:"
+            />
+          </ScrollReveal>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {problems.map((p) => (
-              <div key={p} className="card-glass rounded-2xl p-7">
-                <div className="flex items-center gap-4">
-                  <div className="grid size-10 shrink-0 place-items-center rounded-lg bg-destructive/15 text-destructive">
-                    <FileSearch className="size-5" />
+            {problems.map((p, i) => (
+              <ScrollReveal key={p} delay={i * 100}>
+                <div className="card-glass rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
+                  <div className="flex items-center gap-4">
+                    <div className="grid size-10 shrink-0 place-items-center rounded-lg bg-destructive/15 text-destructive">
+                      <FileSearch className="size-5" />
+                    </div>
+                    <h3 className="font-display text-base font-semibold text-foreground md:text-lg">
+                      {p}
+                    </h3>
                   </div>
-                  <h3 className="font-display text-base font-semibold text-foreground md:text-lg">
-                    {p}
-                  </h3>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
 
-          <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-muted-foreground">
-            Sem uma estratégia clara, o marketing não gera resultados consistentes — apenas
-            esforço.
-          </p>
+          <ScrollReveal delay={400}>
+            <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-muted-foreground">
+              Sem uma estratégia clara, o marketing não gera resultados consistentes — apenas
+              esforço.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* COMO ATUAMOS */}
       <section id="metodo" className="relative px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <SectionHeading
-            eyebrow="Nossa atuação"
-            title={
-              <>
-                Como nossa <span className="text-gradient">agência de inbound marketing</span> atua
-              </>
-            }
-            description="Na Acelera SaaS, estruturamos o inbound como um processo completo, integrado e mensurável."
-          />
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Nossa atuação"
+              title={
+                <>
+                  Como nossa <span className="text-gradient">agência de inbound marketing</span> atua
+                </>
+              }
+              description="Na Acelera SaaS, estruturamos o inbound como um processo completo, integrado e mensurável."
+            />
+          </ScrollReveal>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
-              <div
-                key={s.title}
-                className="card-glass group relative overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
-              >
-                <div className="grid size-12 place-items-center rounded-xl bg-gradient-button shadow-button">
-                  <s.icon className="size-5 text-primary-foreground" />
+            {services.map((s, i) => (
+              <ScrollReveal key={s.title} delay={i * 80} direction="scale">
+                <div className="card-glass group relative overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
+                  <div className="grid size-12 place-items-center rounded-xl bg-gradient-button shadow-button transition-transform duration-300 group-hover:scale-110">
+                    <s.icon className="size-5 text-primary-foreground" />
+                  </div>
+                  <h3 className="mt-5 font-display text-lg font-semibold text-foreground">
+                    {s.title}
+                  </h3>
                 </div>
-                <h3 className="mt-5 font-display text-lg font-semibold text-foreground">
-                  {s.title}
-                </h3>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -257,29 +265,30 @@ function InboundMarketingPage() {
       {/* ESTRATÉGIAS */}
       <section className="relative bg-muted/20 px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <SectionHeading
-            eyebrow="Estratégias"
-            title={
-              <>
-                Estratégias de inbound marketing que <span className="text-gradient">utilizamos</span>
-              </>
-            }
-            description="Combinamos conteúdo, dados e tecnologia para construir um motor de aquisição previsível."
-          />
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Estratégias"
+              title={
+                <>
+                  Estratégias de inbound marketing que <span className="text-gradient">utilizamos</span>
+                </>
+              }
+              description="Combinamos conteúdo, dados e tecnologia para construir um motor de aquisição previsível."
+            />
+          </ScrollReveal>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {strategies.map((s) => (
-              <div
-                key={s.title}
-                className="card-glass flex gap-5 rounded-2xl p-7 transition-colors hover:border-primary/40"
-              >
-                <div className="grid size-12 shrink-0 place-items-center rounded-xl border border-primary/30 bg-primary/10">
-                  <s.icon className="size-5 text-purple-light" />
+            {strategies.map((s, i) => (
+              <ScrollReveal key={s.title} delay={i * 120} direction={i % 2 === 0 ? "left" : "right"}>
+                <div className="card-glass flex gap-5 rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
+                  <div className="grid size-12 shrink-0 place-items-center rounded-xl border border-primary/30 bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20">
+                    <s.icon className="size-5 text-purple-light" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-lg font-semibold text-foreground">{s.title}</h3>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-display text-lg font-semibold text-foreground">{s.title}</h3>
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -288,31 +297,32 @@ function InboundMarketingPage() {
       {/* PROCESSO */}
       <section className="relative px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <SectionHeading
-            eyebrow="Processo"
-            title={
-              <>
-                Como <span className="text-gradient">funciona</span> nosso processo
-              </>
-            }
-            description="Quatro etapas conectadas que transformam o marketing do seu SaaS em uma máquina previsível."
-          />
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Processo"
+              title={
+                <>
+                  Como <span className="text-gradient">funciona</span> nosso processo
+                </>
+              }
+              description="Quatro etapas conectadas que transformam o marketing do seu SaaS em uma máquina previsível."
+            />
+          </ScrollReveal>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
-              <div
-                key={s.n}
-                className="card-glass relative rounded-2xl p-7"
-              >
-                <span className="font-display text-5xl font-extrabold text-gradient">{s.n}</span>
-                <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
-                  {s.title}
-                </h3>
-                
-                {i < steps.length - 1 && (
-                  <ChevronRight className="absolute right-3 top-1/2 hidden size-5 -translate-y-1/2 text-primary/50 lg:block" />
-                )}
-              </div>
+              <ScrollReveal key={s.n} delay={i * 150}>
+                <div className="card-glass relative rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
+                  <span className="font-display text-5xl font-extrabold heading-gradient-animated">{s.n}</span>
+                  <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
+                    {s.title}
+                  </h3>
+
+                  {i < steps.length - 1 && (
+                    <ChevronRight className="absolute right-3 top-1/2 hidden size-5 -translate-y-1/2 text-primary/50 lg:block animate-subtle-pulse" />
+                  )}
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -321,27 +331,30 @@ function InboundMarketingPage() {
       {/* RESULTADOS */}
       <section className="relative bg-muted/20 px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <SectionHeading
-            eyebrow="Resultados"
-            title={
-              <>
-                Resultados que você <span className="text-gradient">pode esperar</span>
-              </>
-            }
-            description="Trabalhamos com indicadores claros — desde o topo do funil até a receita gerada."
-          />
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Resultados"
+              title={
+                <>
+                  Resultados que você <span className="text-gradient">pode esperar</span>
+                </>
+              }
+              description="Trabalhamos com indicadores claros — desde o topo do funil até a receita gerada."
+            />
+          </ScrollReveal>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {results.map((r) => (
-              <div key={r.title} className="card-glass rounded-2xl p-7 text-center">
-                <div className="mx-auto grid size-14 place-items-center rounded-2xl bg-gradient-button shadow-button">
-                  <r.icon className="size-6 text-primary-foreground" />
+            {results.map((r, i) => (
+              <ScrollReveal key={r.title} delay={i * 100} direction="scale">
+                <div className="card-glass rounded-2xl p-7 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-glow">
+                  <div className="mx-auto grid size-14 place-items-center rounded-2xl bg-gradient-button shadow-button transition-transform duration-300 hover:scale-110">
+                    <r.icon className="size-6 text-primary-foreground" />
+                  </div>
+                  <h3 className="mt-5 font-display text-base font-semibold text-foreground">
+                    {r.title}
+                  </h3>
                 </div>
-                <h3 className="mt-5 font-display text-base font-semibold text-foreground">
-                  {r.title}
-                </h3>
-                
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -350,29 +363,32 @@ function InboundMarketingPage() {
       {/* FAQ */}
       <section className="relative px-6 py-24">
         <div className="mx-auto max-w-3xl">
-          <SectionHeading
-            eyebrow="FAQ"
-            title={
-              <>
-                Perguntas <span className="text-gradient">frequentes</span>
-              </>
-            }
-          />
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="FAQ"
+              title={
+                <>
+                  Perguntas <span className="text-gradient">frequentes</span>
+                </>
+              }
+            />
+          </ScrollReveal>
 
           <Accordion type="single" collapsible className="mt-12 space-y-4">
             {faqs.map((f, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                className="card-glass rounded-2xl border-none px-6 [&>h3]:font-display"
-              >
-                <AccordionTrigger className="text-left font-display text-base font-semibold text-foreground hover:no-underline">
-                  {f.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-                  {f.a}
-                </AccordionContent>
-              </AccordionItem>
+              <ScrollReveal key={i} delay={i * 100}>
+                <AccordionItem
+                  value={`item-${i}`}
+                  className="card-glass rounded-2xl border-none px-6 [&>h3]:font-display"
+                >
+                  <AccordionTrigger className="text-left font-display text-base font-semibold text-foreground hover:no-underline">
+                    {f.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
+              </ScrollReveal>
             ))}
           </Accordion>
         </div>
@@ -381,27 +397,29 @@ function InboundMarketingPage() {
       {/* CTA FINAL */}
       <section id="cta-final" className="relative overflow-hidden px-6 py-24">
         <div className="relative mx-auto max-w-4xl">
-          <div className="card-glass relative overflow-hidden rounded-3xl px-8 py-16 text-center shadow-glow md:px-16">
-            <div
-              className="absolute inset-0 opacity-30"
-              style={{ background: "var(--gradient-accent)" }}
-              aria-hidden
-            />
-            <div className="relative">
-              <CheckCircle2 className="mx-auto size-10 text-purple-light" />
-              <h2 className="mt-6 font-display text-3xl font-extrabold leading-tight tracking-tight md:text-4xl lg:text-5xl">
-                Quer transformar seu marketing em uma{" "}
-                <span className="heading-gradient">máquina de geração de leads</span>?
-              </h2>
-              <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
-                Vamos diagnosticar seu funil, desenhar a estratégia e executar com você o inbound
-                que o seu SaaS precisa.
-              </p>
-              <div className="mt-10">
-                <CTAButton size="lg">Falar com especialista</CTAButton>
+          <ScrollReveal direction="scale">
+            <div className="card-glass relative overflow-hidden rounded-3xl px-8 py-16 text-center shadow-glow animate-glow-pulse md:px-16">
+              <div
+                className="absolute inset-0 opacity-30"
+                style={{ background: "var(--gradient-accent)" }}
+                aria-hidden
+              />
+              <div className="relative">
+                <CheckCircle2 className="mx-auto size-10 text-purple-light animate-float" />
+                <h2 className="mt-6 font-display text-3xl font-extrabold leading-tight tracking-tight md:text-4xl lg:text-5xl">
+                  Quer transformar seu marketing em uma{" "}
+                  <span className="heading-gradient-animated">máquina de geração de leads</span>?
+                </h2>
+                <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
+                  Vamos diagnosticar seu funil, desenhar a estratégia e executar com você o inbound
+                  que o seu SaaS precisa.
+                </p>
+                <div className="mt-10">
+                  <CTAButton size="lg">Falar com especialista</CTAButton>
+                </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
