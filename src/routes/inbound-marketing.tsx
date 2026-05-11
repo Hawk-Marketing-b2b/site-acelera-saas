@@ -210,14 +210,14 @@ function InboundMarketingPage() {
 
           <div className="mt-14 grid gap-6 md:grid-cols-2">
             {problems.map((p, i) => (
-              <ScrollReveal key={p} delay={i * 100}>
+              <ScrollReveal key={p.title} delay={i * 100}>
                 <div className="card-glass rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
                   <div className="flex items-center gap-4">
                     <div className="grid size-10 shrink-0 place-items-center rounded-lg bg-destructive/15 text-destructive">
-                      <FileSearch className="size-5" />
+                      <p.icon className="size-5" />
                     </div>
                     <h3 className="font-display text-base font-semibold text-foreground md:text-lg">
-                      {p}
+                      {p.title}
                     </h3>
                   </div>
                 </div>
