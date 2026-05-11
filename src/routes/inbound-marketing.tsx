@@ -395,7 +395,7 @@ function InboundMarketingPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section id="cta-final" className="relative overflow-hidden px-6 py-32">
+      <section id="cta-final" className="relative overflow-hidden px-6 py-16">
         {/* Background orbs + grid */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-grid-fade opacity-100" />
@@ -434,7 +434,7 @@ function InboundMarketingPage() {
 
         <div className="relative mx-auto max-w-4xl">
           <ScrollReveal direction="scale">
-            <div className="card-glass animate-tilt relative overflow-hidden rounded-3xl border border-border/50 px-8 py-20 text-center shadow-glow md:px-16 md:py-24">
+            <div className="card-glass animate-tilt relative overflow-hidden rounded-3xl border border-border/50 px-8 py-12 text-center shadow-glow md:px-16 md:py-14">
               <div
                 className="absolute inset-0 opacity-40"
                 style={{
