@@ -452,7 +452,7 @@ function InboundMarketingPage() {
                 </div>
 
                 <h2
-                  className="animate-fade-up mt-7 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl"
+                  className="animate-fade-up mt-7 font-display text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
                   style={{ animationDelay: "0.08s" }}
                 >
                   <span className="heading-gradient-animated whitespace-nowrap block">
