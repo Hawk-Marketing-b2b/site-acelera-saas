@@ -60,10 +60,10 @@ export const Route = createFileRoute("/inbound-marketing")({
 });
 
 const problems = [
-  "Tráfego sem conversão",
-  "Falta de um funil estruturado",
-  "Ausência de estratégia de conteúdo",
-  "Leads desqualificados",
+  { icon: MousePointerClick, title: "Tráfego sem conversão" },
+  { icon: Filter, title: "Falta de um funil estruturado" },
+  { icon: FileX, title: "Ausência de estratégia de conteúdo" },
+  { icon: UserX, title: "Leads desqualificados" },
 ];
 
 const services = [
