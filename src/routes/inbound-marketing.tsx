@@ -395,27 +395,113 @@ function InboundMarketingPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section id="cta-final" className="relative overflow-hidden px-6 py-24">
+      <section id="cta-final" className="relative overflow-hidden px-6 py-32">
+        {/* Background orbs + grid */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-grid-fade opacity-60" />
+          <div
+            className="glow-orb animate-orb-drift"
+            style={{
+              top: "-10%",
+              left: "-8%",
+              width: "520px",
+              height: "520px",
+              background: "oklch(0.55 0.25 340 / 0.45)",
+            }}
+          />
+          <div
+            className="glow-orb animate-float-slow"
+            style={{
+              bottom: "-15%",
+              right: "-10%",
+              width: "600px",
+              height: "600px",
+              background: "oklch(0.62 0.24 300 / 0.45)",
+            }}
+          />
+          <div
+            className="glow-orb animate-orb-drift"
+            style={{
+              top: "30%",
+              right: "20%",
+              width: "320px",
+              height: "320px",
+              background: "oklch(0.74 0.18 340 / 0.35)",
+              animationDelay: "-6s",
+            }}
+          />
+        </div>
+
         <div className="relative mx-auto max-w-4xl">
           <ScrollReveal direction="scale">
-            <div className="card-glass relative overflow-hidden rounded-3xl px-8 py-16 text-center shadow-glow animate-glow-pulse md:px-16">
+            <div className="card-glass animate-tilt relative overflow-hidden rounded-3xl border border-border/50 px-8 py-20 text-center shadow-glow md:px-16 md:py-24">
               <div
-                className="absolute inset-0 opacity-30"
-                style={{ background: "var(--gradient-accent)" }}
+                className="absolute inset-0 opacity-40"
+                style={{
+                  background:
+                    "linear-gradient(135deg, oklch(0.62 0.24 300 / 0.25) 0%, oklch(0.55 0.25 340 / 0.25) 100%)",
+                }}
                 aria-hidden
               />
               <div className="relative">
-                <CheckCircle2 className="mx-auto size-10 text-purple-light animate-float" />
-                <h2 className="mt-6 font-display text-3xl font-extrabold leading-tight tracking-tight md:text-4xl lg:text-5xl">
-                  Quer transformar seu marketing em uma{" "}
-                  <span className="heading-gradient-animated">máquina de geração de leads</span>?
+                <div
+                  className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-purple-light backdrop-blur"
+                >
+                  <CheckCircle2 className="size-3.5" />
+                  Vamos acelerar seu SaaS
+                </div>
+
+                <h2
+                  className="animate-fade-up mt-7 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl"
+                  style={{ animationDelay: "0.08s" }}
+                >
+                  <span className="heading-gradient-animated">
+                    Quer transformar seu marketing em uma máquina de geração de leads?
+                  </span>
                 </h2>
-                <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
-                  Vamos diagnosticar seu funil, desenhar a estratégia e executar com você o inbound
-                  que o seu SaaS precisa.
+
+                <p
+                  className="animate-fade-up mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
+                  style={{ animationDelay: "0.16s" }}
+                >
+                  Vamos diagnosticar seu funil, desenhar a estratégia e executar com você o
+                  inbound que o seu SaaS precisa — com método validado em mais de 400 projetos.
                 </p>
-                <div className="mt-10">
-                  <CTAButton size="lg">Falar com especialista</CTAButton>
+
+                <div
+                  className="animate-fade-up mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
+                  style={{ animationDelay: "0.24s" }}
+                >
+                  <div className="relative inline-flex rounded-full">
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 rounded-full animate-pulse-ring"
+                    />
+                    <CTAButton size="lg" className="relative">
+                      Falar com especialista
+                    </CTAButton>
+                  </div>
+                  <CTAButton href="#metodo" variant="outline" size="lg" showIcon={false}>
+                    Ver nosso método
+                  </CTAButton>
+                </div>
+
+                <div
+                  className="animate-fade-up mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-muted-foreground"
+                  style={{ animationDelay: "0.32s" }}
+                >
+                  <span className="inline-flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-purple-light" />
+                    Resposta em até 24h
+                  </span>
+                  <span className="inline-flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-purple-light" />
+                    Diagnóstico gratuito
+                  </span>
+                  <span className="inline-flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-purple-light" />
+                    Especialistas em SaaS B2B
+                  </span>
                 </div>
               </div>
             </div>
