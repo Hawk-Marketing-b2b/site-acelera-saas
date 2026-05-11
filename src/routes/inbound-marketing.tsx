@@ -395,7 +395,7 @@ function InboundMarketingPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section id="cta-final" className="relative overflow-hidden px-6 py-32">
+      <section id="cta-final" className="relative overflow-hidden px-6 py-16">
         {/* Background orbs + grid */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-grid-fade opacity-100" />
