@@ -211,6 +211,25 @@
     animation: subtle-pulse 3s ease-in-out infinite;
   }
 
+  /* Meteor / shooting-star beams (BackgroundFx) */
+  @keyframes meteor {
+    0%   { opacity: 0; transform: translateX(-1400px); }
+    15%  { opacity: 1; }
+    85%  { opacity: 1; }
+    100% { opacity: 0; transform: translateX(200px); }
+  }
+  .animate-meteor {
+    animation: meteor linear infinite;
+    transform-box: fill-box;
+    transform-origin: 0 50%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-meteor {
+      animation: none;
+      transform: none;
+    }
+  }
+
   /* Scroll reveal animations */
   .scroll-reveal,
   .scroll-reveal-left,

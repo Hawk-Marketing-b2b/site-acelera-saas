@@ -1,33 +1,68 @@
-Aqui está um prompt pronto que você pode colar em outras conversas do Lovable para padronizar os ícones com o estilo da página de Inbound Marketing:
+## Objetivo
 
----
+Recriar fielmente o efeito visual de fundo da hero do acelerasaas.com no nosso `BackgroundFx`: **feixes finos diagonais coloridos**, parecidos com meteoros/shooting stars, em vez dos gradientes "faixa larga" que estão lá hoje.
 
-**Prompt para colar:**
+## O que observei no site original
 
-> Quero padronizar todos os ícones desta página seguindo o mesmo sistema visual que já uso na página de Inbound Marketing do Acelera SaaS. Use Lucide React e os tokens semânticos do design system (`--primary`, `--secondary`, `--gradient-button`, `--shadow-button`, `--purple-light`, `border`, `muted`, etc.) — nada de cores hardcoded.
->
-> **Padrões de ícone (use o mesmo de acordo com o contexto):**
->
-> 1. **Ícone "destaque/dor" (vermelho sutil):** container `grid size-10 place-items-center rounded-lg bg-destructive/15 text-destructive` com ícone `size-5`. Usar para problemas, alertas e pontos negativos.
->
-> 2. **Ícone "principal/feature" (gradiente roxo→magenta):** container `grid size-12 place-items-center rounded-xl bg-gradient-button shadow-button transition-transform duration-300 group-hover:scale-110` com ícone `size-5 text-primary-foreground`. Usar para benefícios, features principais e CTAs visuais.
->
-> 3. **Ícone "secundário/suporte" (outline roxo):** container `grid size-12 shrink-0 place-items-center rounded-xl border border-primary/30 bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20` com ícone `size-5 text-purple-light`. Usar para listas de serviços, etapas e informações de apoio.
->
-> 4. **Ícone "resultado/métrica" (gradiente grande, centralizado):** container `mx-auto grid size-14 place-items-center rounded-2xl bg-gradient-button shadow-button transition-transform duration-300 hover:scale-110` com ícone `size-6 text-primary-foreground`. Usar para cards centralizados de resultados/números.
->
-> 5. **Ícone inline em badges/listas:** apenas `size-3.5 text-purple-light` (ex: `CheckCircle2`) dentro de pílulas ou bullets.
->
-> 6. **Ícones de seta/indicadores sutis:** `size-3` a `size-5` com `text-primary/50` ou `text-purple-light`, podendo ter `animate-subtle-pulse` ou `animate-float`.
->
-> **Regras gerais:**
-> - Sempre dentro de cards `card-glass rounded-2xl p-7` quando agrupados.
-> - Hover do card pai: `hover:-translate-y-1 hover:border-primary/40` e às vezes `hover:shadow-glow`.
-> - Use sempre ícones do `lucide-react`, escolhendo o ícone semanticamente mais adequado ao conteúdo (não troque o significado).
-> - Mantenha tudo responsivo e acessível.
->
-> Aplique esses padrões aos ícones existentes da página, sem alterar o conteúdo nem a estrutura das seções.
+Inspecionei a hero ao vivo (2 screenshots em momentos diferentes):
 
----
+- Linhas **muito finas** (1–2 px), nítidas, com leve glow.
+- Inclinação de ~115° (cima-direita → baixo-esquerda).
+- **Comprimentos variados**: alguns atravessam toda a seção, outros são curtos (rastro tipo meteoro).
+- Cores: azul ciano, azul cobalto, magenta/rosa, verde-água, roxo claro.
+- Espalhamento irregular, densidade média (~12 feixes visíveis).
+- **Animação**: feixes se deslocam (shooting stars). Posições mudaram entre screenshots.
+- Não é uma imagem nem SVG estático único — são elementos individuais animados.
 
-Se quiser, depois posso transformar esses padrões em componentes reutilizáveis (`<IconTile variant="primary|outline|destructive|result" />`) para deixar ainda mais consistente entre páginas.
+## Implementação
+
+### 1. Reescrever `src/components/site/BackgroundFx.tsx`
+
+Manter os 2 orbes roxo/magenta + grid existentes (são bons e batem com o site original na borda). **Remover** o bloco atual de "feixes" baseado em `linear-gradient` (faixas largas borradas — não é o que se quer).
+
+Adicionar uma camada nova de **meteoros em SVG**:
+
+- Um único `<svg>` absoluto cobrindo a seção (`absolute inset-0 w-full h-full`), com `viewBox="0 0 1440 800"` e `preserveAspectRatio="none"` (ou `xMidYMid slice` se preferir manter proporção).
+- Dentro: um `<defs>` com:
+  - 1 `<linearGradient>` por cor (ciano, cobalto, magenta, verde-água, roxo claro), todos com mesma direção (~115°), começando transparente → cor sólida → transparente. Isso dá o efeito de "rastro".
+  - 1 `<filter id="beam-glow">` com `feGaussianBlur stdDeviation="1.5"` + `feMerge` pra dar o halo.
+- Cerca de **12 `<line>`** (ou `<rect>` finos rotacionados) com:
+  - `stroke-width` entre 1 e 2.
+  - `stroke="url(#gradiente-cor)"`.
+  - `filter="url(#beam-glow)"`.
+  - Posições, comprimentos e cores variados, distribuídos por toda a seção.
+  - Inclinação ~115° (`transform="rotate(25 cx cy)"` ou coordenadas calculadas).
+
+### 2. Animação (CSS keyframes em `src/styles.css`)
+
+Criar um keyframe `meteor` que move cada linha ao longo do próprio eixo diagonal e faz fade in/out:
+
+```
+@keyframes meteor {
+  0%   { opacity: 0; transform: translate(0, 0); }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-200px, 90px); }
+}
+.animate-meteor { animation: meteor linear infinite; }
+```
+
+Aplicar a cada `<line>` com `animationDuration` e `animationDelay` distintos (entre 4s–9s, delays escalonados de -1s a -8s) para evitar pulso sincronizado e dar sensação de chuva contínua.
+
+Respeitar `prefers-reduced-motion`: desligar a animação (manter os feixes estáticos).
+
+### 3. Resultado
+
+Como `BackgroundFx` já é usado tanto na home (`/`) quanto na `/inbound-marketing`, **as duas páginas ganham o efeito automaticamente** — padronização mantida.
+
+## Arquivos a alterar
+
+- `src/components/site/BackgroundFx.tsx` — reescrever camada de feixes (SVG + filtros).
+- `src/styles.css` — adicionar keyframes `meteor` + classe utilitária + media query `prefers-reduced-motion`.
+
+Nenhum novo asset, nenhuma nova dependência.
+
+## Fora de escopo
+
+- Não copio o carrinho de F1 que aparece no canto direito do site original (asset de marca específico deles).
+- Não vou alterar texto, layout, cards ou qualquer outra parte da hero — só o background decorativo.
