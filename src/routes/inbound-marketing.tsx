@@ -456,7 +456,7 @@ function InboundMarketingPage() {
                   style={{ animationDelay: "0.08s" }}
                 >
                   <span className="heading-gradient-animated">
-                    Quer transformar seu marketing em uma máquina de geração de leads?
+                    Quer transformar seu marketing <br /> em uma máquina <br /> de geração de leads?
                   </span>
                 </h2>
 
