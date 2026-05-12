@@ -23,7 +23,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CTAButton } from "@/components/site/CTAButton";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { BackgroundFx } from "@/components/site/BackgroundFx";
+
 import { ScrollReveal } from "@/hooks/use-scroll-animation";
 import {
   Accordion,
@@ -117,44 +117,52 @@ function InboundMarketingPage() {
 
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-hero">
-        <BackgroundFx />
-        <div className="relative mx-auto max-w-5xl px-6 pb-24 pt-20 text-center md:pt-28">
-          <div className="animate-fade-up">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/40 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground backdrop-blur">
-              <span className="size-1.5 rounded-full bg-primary animate-subtle-pulse" />
-              Inbound Marketing para SaaS
-            </span>
-          </div>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-float-slow"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-secondary/20 blur-3xl animate-float-slower"
+        />
 
-          <h1
-            className="animate-fade-up mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight heading-gradient-animated md:text-6xl lg:text-7xl"
-            style={{ animationDelay: "0.05s" }}
-          >
+        <div className="container mx-auto max-w-5xl px-6 py-24 md:py-32 relative flex flex-col items-center text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-1.5 text-xs font-medium text-purple-light backdrop-blur animate-in fade-in duration-700">
+            <span className="size-1.5 rounded-full bg-accent animate-pulse" />
+            Inbound Marketing para SaaS
+          </span>
+
+          <h1 className="heading-gradient font-sans text-4xl font-extrabold leading-tight tracking-tight md:text-5xl lg:text-6xl text-balance mt-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
             Agência de Inbound Marketing
             <br className="hidden md:block" /> para SaaS
           </h1>
 
           <p
-            className="animate-fade-up mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
-            style={{ animationDelay: "0.1s" }}
+            className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl animate-in fade-in slide-in-from-bottom-4 duration-700"
+            style={{ animationDelay: "120ms", animationFillMode: "both" }}
           >
             Atraia clientes ideais e transforme o marketing do seu software em um canal previsível
             de geração de leads.
           </p>
 
           <div
-            className="animate-fade-up mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
-            style={{ animationDelay: "0.15s" }}
+            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-in fade-in slide-in-from-bottom-4 duration-700"
+            style={{ animationDelay: "220ms", animationFillMode: "both" }}
           >
-            <CTAButton size="lg">Falar com especialista</CTAButton>
+            <a
+              href="#contato"
+              className="inline-flex h-14 items-center justify-center rounded-full bg-gradient-button px-9 font-display text-base font-semibold text-white shadow-button transition-transform hover:scale-105 hover:opacity-90"
+            >
+              Falar com especialista
+            </a>
             <CTAButton href="#metodo" variant="outline" size="lg" showIcon={false}>
               Ver nosso método
             </CTAButton>
           </div>
 
           <div
-            className="animate-fade-up mt-16 flex items-center justify-center gap-2 text-xs text-muted-foreground"
-            style={{ animationDelay: "0.25s" }}
+            className="mt-16 flex items-center justify-center gap-2 text-xs text-muted-foreground animate-in fade-in duration-700"
+            style={{ animationDelay: "320ms", animationFillMode: "both" }}
           >
             <ArrowDown className="size-3 animate-float" />
             Como o inbound transforma seu marketing
