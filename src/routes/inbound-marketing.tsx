@@ -23,7 +23,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CTAButton } from "@/components/site/CTAButton";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { BackgroundFx } from "@/components/site/BackgroundFx";
+
 import { ScrollReveal } from "@/hooks/use-scroll-animation";
 import {
   Accordion,
