@@ -46,25 +46,25 @@
   --radius: 0.75rem;
 
   /* Dark theme — usado em todas as páginas */
-  --background: oklch(0 0 0);                     /* preto */
+  --background: oklch(0 0 0); /* preto */
   --foreground: oklch(1 0 0);
-  --card: oklch(0.255 0.065 305);                 /* #291E33 */
+  --card: oklch(0.255 0.065 305); /* #291E33 */
   --card-foreground: oklch(1 0 0);
   --popover: oklch(0.255 0.065 305);
   --popover-foreground: oklch(1 0 0);
-  --muted: oklch(0.285 0.055 305);                /* #2E2438 */
-  --muted-foreground: oklch(0.78 0.005 286);      /* #B8B8B8 */
-  --accent: oklch(0.74 0.18 340);                 /* #E879D6 */
+  --muted: oklch(0.285 0.055 305); /* #2E2438 */
+  --muted-foreground: oklch(0.78 0.005 286); /* #B8B8B8 */
+  --accent: oklch(0.74 0.18 340); /* #E879D6 */
   --accent-foreground: oklch(1 0 0);
-  --border: oklch(0.34 0.07 305);                 /* #3D2F4D */
+  --border: oklch(0.34 0.07 305); /* #3D2F4D */
   --input: oklch(0.285 0.055 305);
-  --ring: oklch(0.62 0.24 300);                   /* #A855F7 */
+  --ring: oklch(0.62 0.24 300); /* #A855F7 */
 
-  --primary: oklch(0.62 0.24 300);                /* roxo #A855F7 */
+  --primary: oklch(0.62 0.24 300); /* roxo #A855F7 */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.55 0.25 340);              /* magenta #D428A6 */
+  --secondary: oklch(0.55 0.25 340); /* magenta #D428A6 */
   --secondary-foreground: oklch(1 0 0);
-  --purple-light: oklch(0.83 0.11 310);           /* #D9A6F5 */
+  --purple-light: oklch(0.83 0.11 310); /* #D9A6F5 */
 
   --destructive: oklch(0.62 0.24 25);
   --destructive-foreground: oklch(1 0 0);
@@ -76,20 +76,19 @@
   --chart-5: oklch(0.7 0.15 280);
 
   /* Gradientes */
-  --gradient-hero: radial-gradient(
+  --gradient-hero:
+    radial-gradient(
       ellipse 90% 70% at 50% 0%,
       oklch(0.45 0.2 300 / 0.7) 0%,
       oklch(0.32 0.16 305 / 0.45) 45%,
       transparent 75%
     ),
     linear-gradient(180deg, oklch(0.16 0.06 305) 0%, oklch(0.08 0.04 305) 100%);
-  --gradient-card: linear-gradient(
-    145deg,
-    oklch(0.285 0.055 305 / 0.6) 0%,
-    oklch(0.255 0.065 305 / 0.4) 100%
-  );
-  --gradient-accent: linear-gradient(135deg, oklch(0.62 0.24 300) 0%, oklch(0.55 0.25 340) 100%);
-  --gradient-button: linear-gradient(135deg, oklch(0.62 0.24 300) 0%, oklch(0.55 0.25 340) 100%);
+  --gradient-card: linear-gradient(145deg, oklch(0.285 0.055 305 / 0.6) 0%, oklch(0.255 0.065 305 / 0.4) 100%);
+  --gradient-hero: linear-gradient(135deg, hsl(280 30% 10%) 0%, hsl(280 25% 14%) 50%, hsl(280 20% 18%) 100%);
+  --gradient-card: linear-gradient(145deg, hsl(280 20% 20% / 0.6) 0%, hsl(280 25% 16% / 0.4) 100%);
+  --gradient-accent: linear-gradient(135deg, hsl(283 76% 54%) 0%, hsl(320 72% 49%) 100%);
+  --gradient-button: linear-gradient(135deg, hsl(283 76% 54%) 0%, hsl(320 72% 49%) 100%);
   --text-gradient: linear-gradient(135deg, #a855f7 0%, #d428a6 100%);
   --heading-gradient: linear-gradient(90deg, #a855f7 0%, #d428a6 50%, #a855f7 100%);
 
@@ -200,7 +199,8 @@
   }
 
   @keyframes subtle-pulse {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 1;
     }
     50% {
@@ -214,10 +214,20 @@
 
   /* Meteor / shooting-star beams (BackgroundFx) */
   @keyframes meteor {
-    0%   { opacity: 0; transform: translateX(-1400px); }
-    15%  { opacity: 1; }
-    85%  { opacity: 1; }
-    100% { opacity: 0; transform: translateX(200px); }
+    0% {
+      opacity: 0;
+      transform: translateX(-1400px);
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(200px);
+    }
   }
   .animate-meteor {
     animation: meteor linear infinite;
@@ -237,7 +247,8 @@
   .scroll-reveal-right,
   .scroll-reveal-scale {
     opacity: 0;
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
       transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
   }
@@ -265,7 +276,8 @@
 
   /* Floating animation */
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0);
     }
     50% {
@@ -296,7 +308,8 @@
 
   /* Glow pulse for CTA cards */
   @keyframes glow-pulse {
-    0%, 100% {
+    0%,
+    100% {
       box-shadow: 0 0 40px -10px oklch(0.62 0.24 300 / 0.3);
     }
     50% {
@@ -309,8 +322,13 @@
 
   /* Slow float for orbs */
   @keyframes float-slow {
-    0%, 100% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-24px) translateX(12px); }
+    0%,
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-24px) translateX(12px);
+    }
   }
   .animate-float-slow {
     animation: float-slow 12s ease-in-out infinite;
@@ -321,9 +339,16 @@
 
   /* Orb drift across the section */
   @keyframes orb-drift {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(40px, -30px) scale(1.08); }
-    66% { transform: translate(-30px, 20px) scale(0.95); }
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(40px, -30px) scale(1.08);
+    }
+    66% {
+      transform: translate(-30px, 20px) scale(0.95);
+    }
   }
   .animate-orb-drift {
     animation: orb-drift 18s ease-in-out infinite;
@@ -331,9 +356,15 @@
 
   /* Pulse ring around primary CTA */
   @keyframes pulse-ring {
-    0% { box-shadow: 0 0 0 0 oklch(0.62 0.24 300 / 0.55); }
-    70% { box-shadow: 0 0 0 18px oklch(0.62 0.24 300 / 0); }
-    100% { box-shadow: 0 0 0 0 oklch(0.62 0.24 300 / 0); }
+    0% {
+      box-shadow: 0 0 0 0 oklch(0.62 0.24 300 / 0.55);
+    }
+    70% {
+      box-shadow: 0 0 0 18px oklch(0.62 0.24 300 / 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 oklch(0.62 0.24 300 / 0);
+    }
   }
   .animate-pulse-ring {
     animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -341,8 +372,13 @@
 
   /* Subtle tilt for the CTA card */
   @keyframes tilt {
-    0%, 100% { transform: rotate(-0.4deg); }
-    50% { transform: rotate(0.4deg); }
+    0%,
+    100% {
+      transform: rotate(-0.4deg);
+    }
+    50% {
+      transform: rotate(0.4deg);
+    }
   }
   .animate-tilt {
     animation: tilt 10s ease-in-out infinite;
