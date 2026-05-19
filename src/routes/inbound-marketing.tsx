@@ -19,6 +19,7 @@ import {
   Filter,
   FileX,
   UserX,
+  Sparkles,
 } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
