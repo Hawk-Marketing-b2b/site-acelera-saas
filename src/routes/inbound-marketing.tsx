@@ -150,15 +150,10 @@ function InboundMarketingPage() {
             className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-in fade-in slide-in-from-bottom-4 duration-700"
             style={{ animationDelay: "220ms", animationFillMode: "both" }}
           >
-            <a
-              href="#contato"
-              className="inline-flex h-14 items-center justify-center rounded-full bg-gradient-button px-9 font-display text-base font-semibold text-white shadow-button transition-transform hover:scale-105 hover:opacity-90"
-            >
-              Falar com especialista
-            </a>
-            <CTAButton href="#metodo" variant="outline" size="lg" showIcon={false}>
-              Ver nosso método
-            </CTAButton>
+            <button className="button-gradient inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white">
+              Falar com Especialista
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
 
           <div
