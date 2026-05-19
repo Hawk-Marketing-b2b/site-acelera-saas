@@ -495,15 +495,16 @@ function InboundMarketingPage() {
                   className="animate-fade-up mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
                   style={{ animationDelay: "0.24s" }}
                 >
-                  <div className="relative inline-flex rounded-full">
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 rounded-full animate-pulse-ring"
-                    />
-                    <CTAButton size="lg" className="relative">
-                      Falar com especialista
-                    </CTAButton>
-                  </div>
+                  <button
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(283, 76%, 54%) 0%, hsl(320, 72%, 49%) 100%)",
+                      boxShadow: "0 4px 16px -4px hsl(283, 76%, 54%, 0.4)",
+                    }}
+                  >
+                    Falar com especialista
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
                   <CTAButton href="#metodo" variant="outline" size="lg" showIcon={false}>
                     Ver nosso método
                   </CTAButton>
