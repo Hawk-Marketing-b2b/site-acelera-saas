@@ -12,6 +12,7 @@ import {
   Zap,
   Database,
   CheckCircle2,
+  ArrowRight,
   ArrowDown,
   ChevronRight,
   MousePointerClick,
