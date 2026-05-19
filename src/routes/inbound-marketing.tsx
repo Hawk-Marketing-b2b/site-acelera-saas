@@ -410,121 +410,76 @@ function InboundMarketingPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section id="cta-final" className="relative overflow-hidden px-6 py-16">
-        {/* Background orbs + grid */}
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-grid-fade opacity-100" />
-          <div
-            className="glow-orb animate-orb-drift"
-            style={{
-              top: "-10%",
-              left: "-8%",
-              width: "520px",
-              height: "520px",
-              background: "oklch(0.55 0.25 340 / 0.45)",
-            }}
-          />
-          <div
-            className="glow-orb animate-float-slow"
-            style={{
-              bottom: "-15%",
-              right: "-10%",
-              width: "600px",
-              height: "600px",
-              background: "oklch(0.62 0.24 300 / 0.45)",
-            }}
-          />
-          <div
-            className="glow-orb animate-orb-drift"
-            style={{
-              top: "30%",
-              right: "20%",
-              width: "320px",
-              height: "320px",
-              background: "oklch(0.74 0.18 340 / 0.35)",
-              animationDelay: "-6s",
-            }}
-          />
-        </div>
+      <section id="contato" className="px-6 pb-32">
+        <div className="mx-auto max-w-5xl">
+          <div className="relative isolate overflow-hidden rounded-[2rem] border border-primary/30 bg-card/40 p-10 md:p-16 backdrop-blur-xl shadow-[0_30px_80px_-20px_hsl(283_76%_54%/0.45)]">
+            <div
+              className="pointer-events-none absolute -top-40 -left-32 h-96 w-96 rounded-full opacity-40 blur-3xl"
+              style={{ background: "var(--gradient-accent)" }}
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute -bottom-40 -right-32 h-96 w-96 rounded-full opacity-30 blur-3xl"
+              style={{ background: "var(--gradient-accent)" }}
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.07]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
+                backgroundSize: "44px 44px",
+                maskImage:
+                  "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+              }}
+              aria-hidden
+            />
 
-        <div className="relative mx-auto max-w-4xl">
-          <ScrollReveal direction="scale">
-            <div className="card-glass animate-tilt relative overflow-hidden rounded-3xl border border-border/50 px-8 py-12 text-center shadow-glow md:px-16 md:py-14">
-              <div
-                className="absolute inset-0 opacity-40"
-                style={{
-                  background:
-                    "linear-gradient(135deg, oklch(0.62 0.24 300 / 0.25) 0%, oklch(0.55 0.25 340 / 0.25) 100%)",
-                }}
-                aria-hidden
-              />
-              <div className="relative">
-                <div
-                  className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-purple-light backdrop-blur"
+            <div className="relative mx-auto max-w-3xl text-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-purple-light backdrop-blur">
+                <Sparkles className="h-3.5 w-3.5" />
+                Vamos acelerar seu SaaS
+              </div>
+
+              <h2 className="heading-gradient-animated mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
+                Quer transformar seu marketing em uma máquina de geração de leads?
+              </h2>
+
+              <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
+                Vamos diagnosticar seu funil, desenhar a estratégia e executar com você o
+                inbound que o seu SaaS precisa — com método validado em mais de 400 projetos.
+              </p>
+
+              <div className="mt-10 flex items-center justify-center">
+                <button
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, hsl(283, 76%, 54%) 0%, hsl(320, 72%, 49%) 100%)",
+                    boxShadow: "0 4px 16px -4px hsl(283, 76%, 54%, 0.4)",
+                  }}
                 >
-                  <CheckCircle2 className="size-3.5" />
-                  Vamos acelerar seu SaaS
+                  Falar com especialista
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="size-3.5 text-purple-light" />
+                  Resposta em até 24h
                 </div>
-
-                <h2
-                  className="animate-fade-up mt-7 font-display text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
-                  style={{ animationDelay: "0.08s" }}
-                >
-                  <span className="heading-gradient-animated whitespace-nowrap block">
-                    Quer transformar seu marketing
-                  </span>
-                  <span className="heading-gradient-animated whitespace-nowrap block">
-                    em uma máquina
-                  </span>
-                  <span className="heading-gradient-animated whitespace-nowrap block">
-                    de geração de leads?
-                  </span>
-                </h2>
-
-                <p
-                  className="animate-fade-up mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
-                  style={{ animationDelay: "0.16s" }}
-                >
-                  Vamos diagnosticar seu funil, desenhar a estratégia e executar com você o
-                  inbound que o seu SaaS precisa — com método validado em mais de 400 projetos.
-                </p>
-
-                <div
-                  className="animate-fade-up mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
-                  style={{ animationDelay: "0.24s" }}
-                >
-                  <button
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95"
-                    style={{
-                      background: "linear-gradient(135deg, hsl(283, 76%, 54%) 0%, hsl(320, 72%, 49%) 100%)",
-                      boxShadow: "0 4px 16px -4px hsl(283, 76%, 54%, 0.4)",
-                    }}
-                  >
-                    Falar com especialista
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="size-3.5 text-purple-light" />
+                  Diagnóstico gratuito
                 </div>
-
-                <div
-                  className="animate-fade-up mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-muted-foreground"
-                  style={{ animationDelay: "0.32s" }}
-                >
-                  <span className="inline-flex items-center gap-2">
-                    <CheckCircle2 className="size-3.5 text-purple-light" />
-                    Resposta em até 24h
-                  </span>
-                  <span className="inline-flex items-center gap-2">
-                    <CheckCircle2 className="size-3.5 text-purple-light" />
-                    Diagnóstico gratuito
-                  </span>
-                  <span className="inline-flex items-center gap-2">
-                    <CheckCircle2 className="size-3.5 text-purple-light" />
-                    Especialistas em SaaS B2B
-                  </span>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="size-3.5 text-purple-light" />
+                  Especialistas em SaaS B2B
                 </div>
               </div>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
