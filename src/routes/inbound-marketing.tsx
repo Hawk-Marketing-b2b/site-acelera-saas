@@ -491,10 +491,6 @@ function InboundMarketingPage() {
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
-                  <CTAButton href="#metodo" variant="outline" size="lg" showIcon={false}>
-                    Ver nosso método
-                  </CTAButton>
-                </div>
 
                 <div
                   className="animate-fade-up mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-muted-foreground"
