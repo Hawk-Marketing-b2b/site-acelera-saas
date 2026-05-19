@@ -13,6 +13,7 @@ import {
   Database,
   CheckCircle2,
   ArrowDown,
+  ArrowRight,
   ChevronRight,
   MousePointerClick,
   Filter,
