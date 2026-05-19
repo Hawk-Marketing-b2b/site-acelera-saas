@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { CTAButton } from "@/components/site/CTAButton";
+
 import { SectionHeading } from "@/components/site/SectionHeading";
 
 import { ScrollReveal } from "@/hooks/use-scroll-animation";
@@ -160,9 +160,6 @@ function InboundMarketingPage() {
               Falar com especialista
               <ArrowRight className="w-5 h-5" />
             </button>
-            <CTAButton href="#metodo" variant="outline" size="lg" showIcon={false}>
-              Ver nosso método
-            </CTAButton>
           </div>
 
           <div
@@ -505,9 +502,6 @@ function InboundMarketingPage() {
                     Falar com especialista
                     <ArrowRight className="w-5 h-5" />
                   </button>
-                  <CTAButton href="#metodo" variant="outline" size="lg" showIcon={false}>
-                    Ver nosso método
-                  </CTAButton>
                 </div>
 
                 <div
