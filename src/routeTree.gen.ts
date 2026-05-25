@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as InboundMarketingRouteImport } from './routes/inbound-marketing'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PerformanceRoute = PerformanceRouteImport.update({
+  id: '/performance',
+  path: '/performance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InboundMarketingRoute = InboundMarketingRouteImport.update({
   id: '/inbound-marketing',
   path: '/inbound-marketing',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/inbound-marketing': typeof InboundMarketingRoute
+  '/performance': typeof PerformanceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/inbound-marketing': typeof InboundMarketingRoute
+  '/performance': typeof PerformanceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/inbound-marketing': typeof InboundMarketingRoute
+  '/performance': typeof PerformanceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/inbound-marketing'
+  fullPaths: '/' | '/inbound-marketing' | '/performance'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/inbound-marketing'
-  id: '__root__' | '/' | '/inbound-marketing'
+  to: '/' | '/inbound-marketing' | '/performance'
+  id: '__root__' | '/' | '/inbound-marketing' | '/performance'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   InboundMarketingRoute: typeof InboundMarketingRoute
+  PerformanceRoute: typeof PerformanceRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/performance': {
+      id: '/performance'
+      path: '/performance'
+      fullPath: '/performance'
+      preLoaderRoute: typeof PerformanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/inbound-marketing': {
       id: '/inbound-marketing'
       path: '/inbound-marketing'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   InboundMarketingRoute: InboundMarketingRoute,
+  PerformanceRoute: PerformanceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
