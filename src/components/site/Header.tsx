@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "@tanstack/react-router";
 import { ShinyButton } from "@/components/ui/shiny-button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import ContactForm from "@/components/ContactForm";
 import logoAceleraSaas from "@/assets/favicon.png";
 
@@ -21,12 +15,11 @@ export function Header() {
   }, []);
 
   const navItems = [
-    { label: "Inbound Marketing", href: "/inbound-marketing" },
-    { label: "Performance", href: "/performance" },
-    { label: "Web Design", href: "/web-design" },
-    { label: "Vendas", href: "/vendas" },
-    { label: "Comercial", href: "/comercial" },
-    { label: "IA e Automação", href: "/ia-e-automacao" },
+    { label: "Serviços", href: "#servicos" },
+    { label: "Método", href: "#metodo" },
+    { label: "Diferenciais", href: "#diferenciais" },
+    { label: "Depoimentos", href: "#depoimentos" },
+    { label: "Contato", href: "#contato" },
   ];
 
   return (
@@ -40,22 +33,22 @@ export function Header() {
       >
         <div className="container mx-auto px-6">
           <div className="flex h-16 items-center justify-between">
-            <Link to="/" className="flex items-center gap-2">
+            <a href="/" className="flex items-center gap-2">
               <img src={logoAceleraSaas} alt="Acelera SaaS" className="h-8 w-8" />
               <span className="font-bold text-foreground">
                 Acelera<span className="text-gradient">SaaS</span>
               </span>
-            </Link>
+            </a>
 
             <nav className="hidden md:flex items-center gap-6">
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.label}
-                  to={item.href}
+                  href={item.href}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
                 >
                   {item.label}
-                </Link>
+                </a>
               ))}
             </nav>
 
