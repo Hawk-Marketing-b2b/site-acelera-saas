@@ -29,20 +29,39 @@ export function Footer() {
           </a>
         </div>
 
-        {/* Links Rápidos */}
+        {/* Serviços */}
         <div>
-          <h3 className="font-display text-sm font-semibold text-foreground">Links Rápidos</h3>
+          <h3 className="font-display text-sm font-semibold text-foreground">Serviços</h3>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-            <li>
-              <a href="#metodo" className="transition-colors hover:text-foreground">Método</a>
-            </li>
             <li>
               <Link to="/inbound-marketing" className="transition-colors hover:text-foreground">
                 Inbound Marketing
               </Link>
             </li>
             <li>
-              <a href="#cta-final" className="transition-colors hover:text-foreground">Contato</a>
+              <Link to="/performance" className="transition-colors hover:text-foreground">
+                Performance
+              </Link>
+            </li>
+            <li>
+              <Link to="/web-design" className="transition-colors hover:text-foreground">
+                Web Design
+              </Link>
+            </li>
+            <li>
+              <Link to="/vendas" className="transition-colors hover:text-foreground">
+                Vendas
+              </Link>
+            </li>
+            <li>
+              <Link to="/comercial" className="transition-colors hover:text-foreground">
+                Comercial
+              </Link>
+            </li>
+            <li>
+              <Link to="/ia-e-automacao" className="transition-colors hover:text-foreground">
+                IA e Automação
+              </Link>
             </li>
           </ul>
         </div>
