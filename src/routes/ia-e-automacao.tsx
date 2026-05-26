@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight, Bot, Zap, GitBranch, BarChart3, Workflow, MessageSquare,
   CheckCircle2, Sparkles, Brain, Cpu, Network, ArrowDown,
+  Target, PenTool, Code2, TrendingUp, Rocket,
 } from "lucide-react";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
