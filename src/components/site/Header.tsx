@@ -18,6 +18,7 @@ export function Header() {
           <Link
             to="/"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            activeProps={{ className: "text-sm font-medium text-foreground" }}
           >
             Início
           </Link>
@@ -26,20 +27,43 @@ export function Header() {
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             activeProps={{ className: "text-sm font-medium text-foreground" }}
           >
-            Inbound Marketing
+            Inbound
           </Link>
-          <a
-            href="#metodo"
+          <Link
+            to="/performance"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            activeProps={{ className: "text-sm font-medium text-foreground" }}
           >
-            Método
-          </a>
-          <a
-            href="#contato"
+            Performance
+          </Link>
+          <Link
+            to="/web-design"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            activeProps={{ className: "text-sm font-medium text-foreground" }}
           >
-            Contato
-          </a>
+            Web Design
+          </Link>
+          <Link
+            to="/vendas"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            activeProps={{ className: "text-sm font-medium text-foreground" }}
+          >
+            Vendas
+          </Link>
+          <Link
+            to="/comercial"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            activeProps={{ className: "text-sm font-medium text-foreground" }}
+          >
+            Comercial
+          </Link>
+          <Link
+            to="/ia-e-automacao"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            activeProps={{ className: "text-sm font-medium text-foreground" }}
+          >
+            IA e Automação
+          </Link>
         </nav>
 
         <CTAButton size="sm">Falar com especialista</CTAButton>
