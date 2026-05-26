@@ -45,8 +45,6 @@ const faqs = [
   { q: "É possível integrar com meu CRM atual?", a: "Sim. Integramos com HubSpot, Pipedrive, RD Station e outros CRMs utilizados por empresas SaaS." },
 ];
 
-import { Target, PenTool, Code2, TrendingUp, Rocket } from "lucide-react";
-
 function IaAutomacaoPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
