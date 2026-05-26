@@ -82,7 +82,8 @@ function IaAutomacaoPage() {
               className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-in fade-in slide-in-from-bottom-4 duration-700"
               style={{ animationDelay: "220ms", animationFillMode: "both" }}
             >
-              <button
+              <a
+                href="#contato"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95"
                 style={{
                   background: "linear-gradient(135deg, hsl(283, 76%, 54%) 0%, hsl(320, 72%, 49%) 100%)",
@@ -91,7 +92,7 @@ function IaAutomacaoPage() {
               >
                 Falar com especialista
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </a>
             </div>
 
             <div
@@ -345,7 +346,8 @@ function IaAutomacaoPage() {
                 </p>
 
                 <div className="mt-10 flex items-center justify-center">
-                  <button
+                  <a
+                    href="#contato"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95"
                     style={{
                       background:
@@ -355,7 +357,7 @@ function IaAutomacaoPage() {
                   >
                     Falar com especialista
                     <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </a>
                 </div>
 
                 <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted-foreground">
