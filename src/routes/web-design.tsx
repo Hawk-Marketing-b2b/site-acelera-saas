@@ -387,7 +387,8 @@ function WebDesignPage() {
 
             <ScrollReveal delay={200}>
               <div className="mt-10 flex justify-center">
-                <button
+                <a
+                  href="#contato"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95"
                   style={{
                     background: "linear-gradient(135deg, hsl(283, 76%, 54%) 0%, hsl(320, 72%, 49%) 100%)",
@@ -396,7 +397,7 @@ function WebDesignPage() {
                 >
                   Solicitar proposta
                   <ArrowRight className="w-5 h-5" />
-                </button>
+                </a>
               </div>
             </ScrollReveal>
           </div>
