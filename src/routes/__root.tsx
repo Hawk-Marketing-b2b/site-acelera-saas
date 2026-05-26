@@ -29,14 +29,15 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Agência de Marketing para SaaS | Acelera SaaS" },
+      { name: "description", content: "Agência de marketing para SaaS B2B. Geramos demanda qualificada com metodologia validada em mais de 400 projetos." },
+      { name: "author", content: "Acelera SaaS" },
+      { property: "og:title", content: "Agência de Marketing para SaaS | Acelera SaaS" },
+      { property: "og:description", content: "Agência de marketing para SaaS B2B." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Agência de Marketing para SaaS | Acelera SaaS" },
+      { name: "twitter:description", content: "Agência de marketing para SaaS B2B." },
     ],
     links: [
       {

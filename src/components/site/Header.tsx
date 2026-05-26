@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import ContactForm from "@/components/ContactForm";
-import logoAceleraSaas from "@/assets/favicon.png";
+import logoAceleraSaas from "@/assets/logo-acelera-saas.png";
 
 export function Header() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -15,36 +18,31 @@ export function Header() {
   }, []);
 
   const navItems = [
-    { label: "Serviços", href: "#servicos" },
-    { label: "Método", href: "#metodo" },
-    { label: "Diferenciais", href: "#diferenciais" },
-    { label: "Depoimentos", href: "#depoimentos" },
-    { label: "Contato", href: "#contato" },
+    { label: "Serviços", hash: "#servicos" },
+    { label: "Método", hash: "#metodo" },
+    { label: "Diferenciais", hash: "#diferenciais" },
+    { label: "Depoimentos", hash: "#depoimentos" },
+    { label: "Contato", hash: "#contato" },
   ];
 
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-background/80 backdrop-blur-xl border-b border-border"
-            : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+          isScrolled ? "bg-black/95 backdrop-blur-sm" : ""
         }`}
       >
-        <div className="container mx-auto px-6">
-          <div className="flex h-16 items-center justify-between">
-            <a href="/" className="flex items-center gap-2">
-              <img src={logoAceleraSaas} alt="Acelera SaaS" className="h-8 w-8" />
-              <span className="font-bold text-foreground">
-                Acelera<span className="text-gradient">SaaS</span>
-              </span>
-            </a>
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-24 lg:h-32">
+            <Link to="/" className="flex items-center">
+              <img src={logoAceleraSaas} alt="Acelera SaaS" className="h-32 w-auto" />
+            </Link>
 
-            <nav className="hidden md:flex items-center gap-6">
+            <nav className="hidden lg:flex items-center gap-8">
               {navItems.map((item) => (
                 <a
                   key={item.label}
-                  href={item.href}
+                  href={isHome ? item.hash : `/${item.hash}`}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
                 >
                   {item.label}
@@ -52,7 +50,7 @@ export function Header() {
               ))}
             </nav>
 
-            <ShinyButton onClick={() => setIsDialogOpen(true)}>
+            <ShinyButton className="hidden sm:flex" onClick={() => setIsDialogOpen(true)}>
               Falar com Especialista
             </ShinyButton>
           </div>
