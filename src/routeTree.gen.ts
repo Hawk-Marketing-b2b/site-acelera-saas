@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WebDesignRouteImport } from './routes/web-design'
 import { Route as VendasRouteImport } from './routes/vendas'
 import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as InboundMarketingRouteImport } from './routes/inbound-marketing'
 import { Route as ComercialRouteImport } from './routes/comercial'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WebDesignRoute = WebDesignRouteImport.update({
+  id: '/web-design',
+  path: '/web-design',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VendasRoute = VendasRouteImport.update({
   id: '/vendas',
   path: '/vendas',
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/inbound-marketing': typeof InboundMarketingRoute
   '/performance': typeof PerformanceRoute
   '/vendas': typeof VendasRoute
+  '/web-design': typeof WebDesignRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/inbound-marketing': typeof InboundMarketingRoute
   '/performance': typeof PerformanceRoute
   '/vendas': typeof VendasRoute
+  '/web-design': typeof WebDesignRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,6 +70,7 @@ export interface FileRoutesById {
   '/inbound-marketing': typeof InboundMarketingRoute
   '/performance': typeof PerformanceRoute
   '/vendas': typeof VendasRoute
+  '/web-design': typeof WebDesignRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -71,8 +80,15 @@ export interface FileRouteTypes {
     | '/inbound-marketing'
     | '/performance'
     | '/vendas'
+    | '/web-design'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/comercial' | '/inbound-marketing' | '/performance' | '/vendas'
+  to:
+    | '/'
+    | '/comercial'
+    | '/inbound-marketing'
+    | '/performance'
+    | '/vendas'
+    | '/web-design'
   id:
     | '__root__'
     | '/'
@@ -80,6 +96,7 @@ export interface FileRouteTypes {
     | '/inbound-marketing'
     | '/performance'
     | '/vendas'
+    | '/web-design'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -88,10 +105,18 @@ export interface RootRouteChildren {
   InboundMarketingRoute: typeof InboundMarketingRoute
   PerformanceRoute: typeof PerformanceRoute
   VendasRoute: typeof VendasRoute
+  WebDesignRoute: typeof WebDesignRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/web-design': {
+      id: '/web-design'
+      path: '/web-design'
+      fullPath: '/web-design'
+      preLoaderRoute: typeof WebDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vendas': {
       id: '/vendas'
       path: '/vendas'
@@ -136,6 +161,7 @@ const rootRouteChildren: RootRouteChildren = {
   InboundMarketingRoute: InboundMarketingRoute,
   PerformanceRoute: PerformanceRoute,
   VendasRoute: VendasRoute,
+  WebDesignRoute: WebDesignRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
