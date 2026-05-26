@@ -15,7 +15,6 @@ import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as InboundMarketingRouteImport } from './routes/inbound-marketing'
 import { Route as IaEAutomacaoRouteImport } from './routes/ia-e-automacao'
 import { Route as ComercialRouteImport } from './routes/comercial'
-import { Route as IndexRouteImport } from './routes/index'
 
 const WebDesignRoute = WebDesignRouteImport.update({
   id: '/web-design',
@@ -47,14 +46,8 @@ const ComercialRoute = ComercialRouteImport.update({
   path: '/comercial',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/comercial': typeof ComercialRoute
   '/ia-e-automacao': typeof IaEAutomacaoRoute
   '/inbound-marketing': typeof InboundMarketingRoute
@@ -63,7 +56,6 @@ export interface FileRoutesByFullPath {
   '/web-design': typeof WebDesignRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/comercial': typeof ComercialRoute
   '/ia-e-automacao': typeof IaEAutomacaoRoute
   '/inbound-marketing': typeof InboundMarketingRoute
@@ -73,7 +65,6 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/comercial': typeof ComercialRoute
   '/ia-e-automacao': typeof IaEAutomacaoRoute
   '/inbound-marketing': typeof InboundMarketingRoute
@@ -84,7 +75,6 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/comercial'
     | '/ia-e-automacao'
     | '/inbound-marketing'
@@ -93,7 +83,6 @@ export interface FileRouteTypes {
     | '/web-design'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/comercial'
     | '/ia-e-automacao'
     | '/inbound-marketing'
@@ -102,7 +91,6 @@ export interface FileRouteTypes {
     | '/web-design'
   id:
     | '__root__'
-    | '/'
     | '/comercial'
     | '/ia-e-automacao'
     | '/inbound-marketing'
@@ -112,7 +100,6 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   ComercialRoute: typeof ComercialRoute
   IaEAutomacaoRoute: typeof IaEAutomacaoRoute
   InboundMarketingRoute: typeof InboundMarketingRoute
@@ -165,18 +152,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComercialRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   ComercialRoute: ComercialRoute,
   IaEAutomacaoRoute: IaEAutomacaoRoute,
   InboundMarketingRoute: InboundMarketingRoute,
