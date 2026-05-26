@@ -1,77 +1,205 @@
-import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
+import { toast } from "sonner";
 
 interface ContactFormProps {
   onSuccess?: () => void;
 }
 
-export default function ContactForm({ onSuccess }: ContactFormProps) {
-  const [submitted, setSubmitted] = useState(false);
+const WEBHOOK_URL = "https://n8n-n8n-start.t4r0vc.easypanel.host/webhook/site-acelera-saas";
 
-  function handleSubmit(e: React.FormEvent) {
+const getUtmParams = () => {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    utm_source: params.get("utm_source") || "",
+    utm_campaign: params.get("utm_campaign") || "",
+    utm_content: params.get("utm_content") || "",
+    utm_term: params.get("utm_term") || "",
+    utm_medium: params.get("utm_medium") || "",
+  };
+};
+
+const ContactForm = ({ onSuccess }: ContactFormProps) => {
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    whatsapp: "",
+    site: "",
+    segmento: "",
+    receita: "",
+  });
+  const [utmData, setUtmData] = useState({
+    utm_source: "",
+    utm_campaign: "",
+    utm_content: "",
+    utm_term: "",
+    utm_medium: "",
+    referrer: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [emailError, setEmailError] = useState("");
+
+  useEffect(() => {
+    setUtmData({
+      ...getUtmParams(),
+      referrer: document.referrer || "",
+    });
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    onSuccess?.();
-  }
+    setEmailError("");
+    setIsLoading(true);
 
-  if (submitted) {
-    return (
-      <div className="py-8 text-center">
-        <h3 className="text-xl font-semibold text-foreground">Mensagem enviada!</h3>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Em breve um especialista entrará em contato.
-        </p>
-      </div>
-    );
-  }
+    try {
+      const payload = new URLSearchParams({
+        nome: formData.nome,
+        email: formData.email,
+        whatsapp: formData.whatsapp,
+        site: formData.site,
+        segmento: formData.segmento,
+        receita: formData.receita,
+        utm_source: utmData.utm_source,
+        utm_campaign: utmData.utm_campaign,
+        utm_content: utmData.utm_content,
+        utm_term: utmData.utm_term,
+        utm_medium: utmData.utm_medium,
+        referrer: utmData.referrer,
+        page_url: window.location.href,
+        timestamp: new Date().toISOString(),
+      });
+
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        mode: "no-cors",
+        body: payload.toString(),
+      });
+
+      toast.success("Enviado com sucesso!", {
+        description: "Em breve um especialista entrará em contato.",
+      });
+
+      onSuccess?.();
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      toast.error("Erro ao enviar", {
+        description: "Tente novamente em alguns instantes.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const inputClasses =
+    "w-full px-4 py-3 bg-muted/50 border border-border/50 rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-200";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="space-y-1">
-        <label className="text-sm font-medium text-foreground">Nome</label>
-        <input
-          type="text"
-          required
-          placeholder="Seu nome"
-          className="w-full rounded-xl border border-border bg-muted/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-        />
-      </div>
-      <div className="space-y-1">
-        <label className="text-sm font-medium text-foreground">E-mail</label>
+      <input
+        type="text"
+        name="nome"
+        required
+        placeholder="Seu nome*"
+        value={formData.nome}
+        onChange={handleChange}
+        className={inputClasses}
+      />
+
+      <div>
         <input
           type="email"
+          name="email"
           required
-          placeholder="voce@email.com"
-          className="w-full rounded-xl border border-border bg-muted/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+          placeholder="Seu melhor e-mail*"
+          value={formData.email}
+          onChange={(e) => {
+            handleChange(e);
+            if (emailError) setEmailError("");
+          }}
+          className={`${inputClasses} ${emailError ? "ring-2 ring-red-500 border-red-500" : ""}`}
         />
+        {emailError && (
+          <p className="mt-1 text-sm text-red-500">{emailError}</p>
+        )}
       </div>
-      <div className="space-y-1">
-        <label className="text-sm font-medium text-foreground">Empresa</label>
-        <input
-          type="text"
-          placeholder="Nome da empresa"
-          className="w-full rounded-xl border border-border bg-muted/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-        />
+
+      <input
+        type="tel"
+        name="whatsapp"
+        required
+        placeholder="WhatsApp*"
+        value={formData.whatsapp}
+        onChange={handleChange}
+        className={inputClasses}
+      />
+
+      <input
+        type="url"
+        name="site"
+        placeholder="Site da empresa"
+        value={formData.site}
+        onChange={handleChange}
+        className={inputClasses}
+      />
+
+      <div className="relative">
+        <select
+          name="segmento"
+          required
+          value={formData.segmento}
+          onChange={handleChange}
+          className={`${inputClasses} appearance-none pr-10`}
+        >
+          <option value="" disabled>Qual é o segmento do seu SaaS?*</option>
+          <option value="erp">ERP / Gestão</option>
+          <option value="crm">CRM / Vendas</option>
+          <option value="marketing">Marketing / Automação</option>
+          <option value="rh">RH / Gestão de Pessoas</option>
+          <option value="financeiro">Financeiro / Contábil</option>
+          <option value="outros">Outros</option>
+        </select>
+        <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
       </div>
-      <div className="space-y-1">
-        <label className="text-sm font-medium text-foreground">Mensagem</label>
-        <textarea
-          rows={4}
-          placeholder="Como podemos ajudar?"
-          className="w-full rounded-xl border border-border bg-muted/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-        />
+
+      <div className="relative">
+        <select
+          name="receita"
+          required
+          value={formData.receita}
+          onChange={handleChange}
+          className={`${inputClasses} appearance-none pr-10`}
+        >
+          <option value="" disabled>Qual sua receita recorrente mensal?*</option>
+          <option value="ate-50k">Até R$ 50mil</option>
+          <option value="50k-200k">R$ 50mil - R$ 200mil</option>
+          <option value="200k-500k">R$ 200mil - R$ 500mil</option>
+          <option value="500k-1m">R$ 500mil - R$ 1 milhão</option>
+          <option value="acima-1m">Acima de R$ 1 milhão</option>
+        </select>
+        <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
       </div>
-      <button
+
+      <Button
         type="submit"
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95"
+        disabled={isLoading}
+        className="w-full rounded-full py-6 text-base font-semibold text-white hover:-translate-y-0.5 transition-all duration-200"
         style={{
           background: "linear-gradient(135deg, hsl(283, 76%, 54%) 0%, hsl(320, 72%, 49%) 100%)",
           boxShadow: "0 4px 16px -4px hsl(283, 76%, 54%, 0.4)",
         }}
       >
-        Enviar mensagem
-        <ArrowRight className="w-4 h-4" />
-      </button>
+        {isLoading ? "Enviando..." : "Falar com Especialista"}
+      </Button>
     </form>
   );
-}
+};
+
+export default ContactForm;
