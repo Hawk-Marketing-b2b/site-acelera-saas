@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VendasRouteImport } from './routes/vendas'
 import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as InboundMarketingRouteImport } from './routes/inbound-marketing'
+import { Route as ComercialRouteImport } from './routes/comercial'
 import { Route as IndexRouteImport } from './routes/index'
 
 const VendasRoute = VendasRouteImport.update({
@@ -29,6 +30,11 @@ const InboundMarketingRoute = InboundMarketingRouteImport.update({
   path: '/inbound-marketing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComercialRoute = ComercialRouteImport.update({
+  id: '/comercial',
+  path: '/comercial',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/comercial': typeof ComercialRoute
   '/inbound-marketing': typeof InboundMarketingRoute
   '/performance': typeof PerformanceRoute
   '/vendas': typeof VendasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/comercial': typeof ComercialRoute
   '/inbound-marketing': typeof InboundMarketingRoute
   '/performance': typeof PerformanceRoute
   '/vendas': typeof VendasRoute
@@ -50,20 +58,33 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/comercial': typeof ComercialRoute
   '/inbound-marketing': typeof InboundMarketingRoute
   '/performance': typeof PerformanceRoute
   '/vendas': typeof VendasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/inbound-marketing' | '/performance' | '/vendas'
+  fullPaths:
+    | '/'
+    | '/comercial'
+    | '/inbound-marketing'
+    | '/performance'
+    | '/vendas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/inbound-marketing' | '/performance' | '/vendas'
-  id: '__root__' | '/' | '/inbound-marketing' | '/performance' | '/vendas'
+  to: '/' | '/comercial' | '/inbound-marketing' | '/performance' | '/vendas'
+  id:
+    | '__root__'
+    | '/'
+    | '/comercial'
+    | '/inbound-marketing'
+    | '/performance'
+    | '/vendas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ComercialRoute: typeof ComercialRoute
   InboundMarketingRoute: typeof InboundMarketingRoute
   PerformanceRoute: typeof PerformanceRoute
   VendasRoute: typeof VendasRoute
@@ -92,6 +113,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InboundMarketingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/comercial': {
+      id: '/comercial'
+      path: '/comercial'
+      fullPath: '/comercial'
+      preLoaderRoute: typeof ComercialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +132,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ComercialRoute: ComercialRoute,
   InboundMarketingRoute: InboundMarketingRoute,
   PerformanceRoute: PerformanceRoute,
   VendasRoute: VendasRoute,
