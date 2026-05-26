@@ -2,101 +2,86 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, Mail, MapPin } from "lucide-react";
 
 export function Footer() {
+  const services = [
+    { label: "Inbound Marketing", href: "/inbound-marketing" },
+    { label: "Performance", href: "/performance" },
+    { label: "Web Design", href: "/web-design" },
+    { label: "Vendas", href: "/vendas" },
+    { label: "Comercial", href: "/comercial" },
+    { label: "IA e Automação", href: "/ia-e-automacao" },
+  ];
+
   return (
-    <footer className="border-t border-border/50 bg-background">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-3">
-        {/* Brand */}
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="grid size-10 place-items-center rounded-xl bg-gradient-button shadow-button">
-              <span className="font-display text-xl font-extrabold text-primary-foreground">A</span>
-            </span>
-            <span className="font-display text-lg font-extrabold tracking-tight">
-              Acelera<span className="text-gradient">SaaS</span>
-            </span>
+    <footer className="border-t border-border bg-background">
+      <div className="container mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div>
+            <h3 className="text-lg font-bold text-foreground">Acelera SaaS</h3>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Aceleramos o crescimento de empresas SaaS B2B com uma metodologia
+              validada em mais de 400 projetos.
+            </p>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Instagram className="h-4 w-4" />
+            </a>
           </div>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-            Aceleramos o crescimento de empresas SaaS B2B com uma metodologia validada em mais de 400
-            projetos. Sua parceira estratégica para dominar o mercado.
+
+          <div>
+            <h3 className="text-lg font-bold text-foreground">Serviços</h3>
+            <ul className="mt-3 space-y-2">
+              {services.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-bold text-foreground">Contato</h3>
+            <ul className="mt-3 space-y-3 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <Mail className="h-4 w-4 mt-0.5 shrink-0" />
+                <span>contato@acelerasaas.com</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
+                <span>
+                  Complexo Vinhedos, Sala 1508
+                  <br />
+                  Uberlândia – MG, CEP 38411-159
+                </span>
+              </li>
+            </ul>
+            <div className="mt-4 text-xs text-muted-foreground">
+              <p>Hawk Comunicacao LTDA</p>
+              <p>CNPJ 19.247.670/0001-35</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground">
+          <p>
+            © {new Date().getFullYear()} Acelera SaaS. Todos os direitos
+            reservados.
           </p>
-          <a
-            href="https://instagram.com/acelerasaas"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex size-9 items-center justify-center rounded-full border border-border/60 text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground"
-          >
-            <Instagram className="size-4" />
-          </a>
-        </div>
-
-        {/* Serviços */}
-        <div>
-          <h3 className="font-display text-sm font-semibold text-foreground">Serviços</h3>
-          <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-            <li>
-              <Link to="/inbound-marketing" className="transition-colors hover:text-foreground">
-                Inbound Marketing
-              </Link>
-            </li>
-            <li>
-              <Link to="/performance" className="transition-colors hover:text-foreground">
-                Performance
-              </Link>
-            </li>
-            <li>
-              <Link to="/web-design" className="transition-colors hover:text-foreground">
-                Web Design
-              </Link>
-            </li>
-            <li>
-              <Link to="/vendas" className="transition-colors hover:text-foreground">
-                Vendas
-              </Link>
-            </li>
-            <li>
-              <Link to="/comercial" className="transition-colors hover:text-foreground">
-                Comercial
-              </Link>
-            </li>
-            <li>
-              <Link to="/ia-e-automacao" className="transition-colors hover:text-foreground">
-                IA e Automação
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Contato */}
-        <div>
-          <h3 className="font-display text-sm font-semibold text-foreground">Contato</h3>
-          <ul className="mt-4 space-y-4 text-sm text-muted-foreground">
-            <li className="flex items-center gap-2">
-              <Mail className="size-4 shrink-0 text-primary/70" />
-              contato@acelerasaas.com
-            </li>
-            <li className="flex items-start gap-2">
-              <MapPin className="size-4 shrink-0 mt-0.5 text-primary/70" />
-              <span>
-                Complexo Vinhedos, Sala 1508
-                <br />
-                Uberlândia – MG, CEP 38411-159
-              </span>
-            </li>
-          </ul>
-          <div className="mt-5 text-xs text-muted-foreground/70">
-            <p>Hawk Comunicacao LTDA</p>
-            <p>CNPJ 19.247.670/0001-35</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="border-t border-border/40">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row">
-          <span>© {new Date().getFullYear()} Acelera SAAS. Todos os direitos reservados.</span>
-          <div className="flex gap-6">
-            <span className="transition-colors hover:text-foreground cursor-pointer">Política de Privacidade</span>
-            <span className="transition-colors hover:text-foreground cursor-pointer">Termos de Uso</span>
+          <div className="flex items-center gap-4">
+            <a href="#" className="hover:text-foreground transition-colors">
+              Política de Privacidade
+            </a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Termos de Uso
+            </a>
           </div>
         </div>
       </div>

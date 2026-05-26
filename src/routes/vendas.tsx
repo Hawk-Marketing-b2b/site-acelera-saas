@@ -54,7 +54,7 @@ function VendasPage() {
       <Header />
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-hero">
+      <section className="relative overflow-hidden bg-gradient-hero pt-32">
         <div
           aria-hidden
           className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-float-slow"
