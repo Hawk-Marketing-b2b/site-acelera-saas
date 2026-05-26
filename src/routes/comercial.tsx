@@ -158,10 +158,10 @@ function ComercialPage() {
               />
             </ScrollReveal>
 
-            <div className="mt-14 grid gap-6 md:grid-cols-3">
+            <div className="mt-14 grid gap-6 md:grid-cols-3 items-stretch">
               {errors.map((e, i) => (
                 <ScrollReveal key={e.title} delay={i * 100}>
-                  <div className="card-glass group rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
+                  <div className="group card-glass rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 flex flex-col">
                     <div className="grid size-12 place-items-center rounded-xl bg-gradient-button shadow-button transition-transform duration-300 group-hover:scale-110">
                       <e.icon className="size-5 text-primary-foreground" />
                     </div>
