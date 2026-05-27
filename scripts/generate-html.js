@@ -11,7 +11,7 @@ console.log('CSS encontrado:', cssEntry);
 const cssLink = cssEntry ? `<link rel="stylesheet" href="/assets/${cssEntry}">` : '';
 
 const html = `<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +19,7 @@ const html = `<!DOCTYPE html>
   ${cssLink}
 </head>
 <body>
+  <div id="root"></div>
   <script type="module" src="/assets/${jsEntry}"></script>
 </body>
 </html>`;
