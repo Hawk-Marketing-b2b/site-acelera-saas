@@ -31,3 +31,4 @@ jobs:
         with:
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
           publish_dir: ./dist/client
+          cname: acelerasaas.com
