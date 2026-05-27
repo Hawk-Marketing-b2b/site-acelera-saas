@@ -22,11 +22,36 @@ jobs:
         run: |
           npm install
           npm run build
-          echo "--- Conteudo de dist ---"
-          find dist -name "index.html"
+
+      - name: Generate index.html
+        run: |
+          node -e "
+          const fs = require('fs');
+          const manifest = JSON.parse(fs.readFileSync('dist/server/.vite/manifest.json', 'utf8'));
+          const entries = Object.values(manifest);
+          const main = entries.find(e => e.isEntry);
+          const css = entries.flatMap(e => e.css || []);
+          const html = \`<!DOCTYPE html>
+          <html lang='pt-BR'>
+          <head>
+            <meta charset='UTF-8'>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+            <title>Acelera SaaS</title>
+            \${css.map(c => \"<link rel='stylesheet' href='/\" + c + \"'>\").join('')}
+          </head>
+          <body>
+            <div id='root'></div>
+            <script type='module' src='/\${main.file}'></script>
+          </body>
+          </html>\`;
+          fs.writeFileSync('dist/client/index.html', html);
+          console.log('index.html gerado com sucesso!');
+          console.log('JS:', main.file);
+          console.log('CSS:', css);
+          "
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./dist/client
