@@ -22,4 +22,5 @@ const html = `<!DOCTYPE html>
 </html>`;
 
 writeFileSync('dist/client/index.html', html);
-console.log('index.html gerado com sucesso!');
+writeFileSync('dist/client/404.html', html);
+console.log('index.html e 404.html gerados com sucesso!');
