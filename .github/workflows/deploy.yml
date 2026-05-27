@@ -1,57 +1,29 @@
-name: Deploy
-
-on:
-  push:
-    branches: [main]
-
-permissions:
-  contents: write
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '22'
-
-      - name: Install & Build
-        run: |
-          npm install
-          npm run build
-
-      - name: Generate index.html
+- name: Generate index.html
         run: |
           node -e "
           const fs = require('fs');
-          const manifest = JSON.parse(fs.readFileSync('dist/server/.vite/manifest.json', 'utf8'));
-          const entries = Object.values(manifest);
-          const main = entries.find(e => e.isEntry);
-          const css = entries.flatMap(e => e.css || []);
+          const assets = fs.readdirSync('dist/client/assets');
+          
+          const jsEntry = assets.find(f => f.startsWith('index-') && f.endsWith('.js'));
+          const cssEntry = assets.find(f => f.endsWith('.css'));
+          
+          console.log('JS encontrado:', jsEntry);
+          console.log('CSS encontrado:', cssEntry);
+          
           const html = \`<!DOCTYPE html>
-          <html lang='pt-BR'>
-          <head>
-            <meta charset='UTF-8'>
-            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-            <title>Acelera SaaS</title>
-            \${css.map(c => \"<link rel='stylesheet' href='/\" + c + \"'>\").join('')}
-          </head>
-          <body>
-            <div id='root'></div>
-            <script type='module' src='/\${main.file}'></script>
-          </body>
-          </html>\`;
+<html lang='pt-BR'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Acelera SaaS</title>
+  <link rel='stylesheet' href='/assets/\${cssEntry}'>
+</head>
+<body>
+  <div id='root'></div>
+  <script type='module' src='/assets/\${jsEntry}'></script>
+</body>
+</html>\`;
+          
           fs.writeFileSync('dist/client/index.html', html);
           console.log('index.html gerado com sucesso!');
-          console.log('JS:', main.file);
-          console.log('CSS:', css);
           "
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          personal_token: ${{ secrets.DEPLOY_TOKEN }}
-          publish_dir: ./dist/client
