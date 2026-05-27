@@ -8,13 +8,15 @@ const cssEntry = assets.find(f => f.endsWith('.css'));
 console.log('JS encontrado:', jsEntry);
 console.log('CSS encontrado:', cssEntry);
 
+const cssLink = cssEntry ? `<link rel="stylesheet" href="/assets/${cssEntry}">` : '';
+
 const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Agência de Marketing para SaaS | Acelera SaaS</title>
-  <link rel="stylesheet" href="/assets/${cssEntry}">
+  ${cssLink}
 </head>
 <body>
   <script type="module" src="/assets/${jsEntry}"></script>
