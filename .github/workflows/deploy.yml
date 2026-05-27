@@ -22,11 +22,11 @@ jobs:
         run: |
           npm install
           npm run build
-          echo "--- Conteudo de dist/client ---"
-          ls -la dist/client/
+          echo "--- Conteudo de dist ---"
+          find dist -name "index.html"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
-          publish_dir: ./dist/client
+          publish_dir: ./dist
