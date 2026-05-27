@@ -2,22 +2,21 @@ import { readdirSync, writeFileSync } from 'fs';
 
 const assets = readdirSync('dist/client/assets');
 
-const jsEntry = assets.find(f => f.startsWith('index-') && f.endsWith('.js'));
+const jsEntry = assets.find(f => f.startsWith('index-') && f.endsWith('.js') && !f.includes('MNgUKEw9'));
 const cssEntry = assets.find(f => f.endsWith('.css'));
 
 console.log('JS encontrado:', jsEntry);
 console.log('CSS encontrado:', cssEntry);
 
 const html = `<!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acelera SaaS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agência de Marketing para SaaS | Acelera SaaS</title>
   <link rel="stylesheet" href="/assets/${cssEntry}">
 </head>
 <body>
-  <div id="root"></div>
   <script type="module" src="/assets/${jsEntry}"></script>
 </body>
 </html>`;
