@@ -1,0 +1,25 @@
+const fs = require('fs');
+const assets = fs.readdirSync('dist/client/assets');
+
+const jsEntry = assets.find(f => f.startsWith('index-') && f.endsWith('.js'));
+const cssEntry = assets.find(f => f.endsWith('.css'));
+
+console.log('JS encontrado:', jsEntry);
+console.log('CSS encontrado:', cssEntry);
+
+const html = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acelera SaaS</title>
+  <link rel="stylesheet" href="/assets/${cssEntry}">
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/assets/${jsEntry}"></script>
+</body>
+</html>`;
+
+fs.writeFileSync('dist/client/index.html', html);
+console.log('index.html gerado com sucesso!');
