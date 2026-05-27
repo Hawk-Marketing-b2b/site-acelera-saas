@@ -1,5 +1,6 @@
-const fs = require('fs');
-const assets = fs.readdirSync('dist/client/assets');
+import { readdirSync, writeFileSync } from 'fs';
+
+const assets = readdirSync('dist/client/assets');
 
 const jsEntry = assets.find(f => f.startsWith('index-') && f.endsWith('.js'));
 const cssEntry = assets.find(f => f.endsWith('.css'));
@@ -21,5 +22,5 @@ const html = `<!DOCTYPE html>
 </body>
 </html>`;
 
-fs.writeFileSync('dist/client/index.html', html);
+writeFileSync('dist/client/index.html', html);
 console.log('index.html gerado com sucesso!');
