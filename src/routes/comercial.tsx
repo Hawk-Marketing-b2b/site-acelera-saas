@@ -10,6 +10,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { ScrollReveal } from "@/hooks/use-scroll-animation";
+import { useContactDialog } from "@/components/ContactDialogProvider";
 
 export const Route = createFileRoute("/comercial")({
   head: () => ({
@@ -25,6 +26,7 @@ export const Route = createFileRoute("/comercial")({
 });
 
 function ComercialPage() {
+  const { open: openContactDialog } = useContactDialog();
   const errors = [
     { icon: Shuffle, title: "Falta de processo", desc: "Vendas dependem do esforço individual e não se repetem com previsibilidade." },
     { icon: GaugeCircle, title: "Ausência de métricas", desc: "Sem indicadores claros, é impossível identificar gargalos e otimizar resultados." },
@@ -79,17 +81,10 @@ function ComercialPage() {
               className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-in fade-in slide-in-from-bottom-4 duration-700"
               style={{ animationDelay: "220ms", animationFillMode: "both" }}
             >
-              <a
-                href="#contato"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95"
-                style={{
+              <button type="button" onClick={openContactDialog} className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95" style={{
                   background: "linear-gradient(135deg, hsl(283, 76%, 54%) 0%, hsl(320, 72%, 49%) 100%)",
                   boxShadow: "0 4px 16px -4px hsl(283, 76%, 54%, 0.4)",
-                }}
-              >
-                Falar com especialista
-                <ArrowRight className="w-5 h-5" />
-              </a>
+                }}>Falar com especialista<ArrowRight className="w-5 h-5" /></button>
             </div>
 
             <div
@@ -363,18 +358,11 @@ function ComercialPage() {
                 </p>
 
                 <div className="mt-10 flex items-center justify-center">
-                  <a
-                    href="#contato"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95"
-                    style={{
+                  <button type="button" onClick={openContactDialog} className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95" style={{
                       background:
                         "linear-gradient(135deg, hsl(283, 76%, 54%) 0%, hsl(320, 72%, 49%) 100%)",
                       boxShadow: "0 4px 16px -4px hsl(283, 76%, 54%, 0.4)",
-                    }}
-                  >
-                    Falar com especialista
-                    <ArrowRight className="w-5 h-5" />
-                  </a>
+                    }}>Falar com especialista<ArrowRight className="w-5 h-5" /></button>
                 </div>
 
                 <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted-foreground">

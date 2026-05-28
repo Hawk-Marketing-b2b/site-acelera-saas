@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { ContactDialogProvider } from "@/components/ContactDialogProvider";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
