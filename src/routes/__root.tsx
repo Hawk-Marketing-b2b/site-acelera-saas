@@ -25,6 +25,12 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
+  head: () => ({
+    links: [
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
+    ],
+  }),
   component: () => (
     <ContactDialogProvider>
       <Outlet />
