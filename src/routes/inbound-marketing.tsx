@@ -28,12 +28,12 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 
 import { ScrollReveal } from "@/hooks/use-scroll-animation";
 import {
-import { useContactDialog } from "@/components/ContactDialogProvider";
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useContactDialog } from "@/components/ContactDialogProvider";
 
 const META_TITLE = "Agência de Inbound Marketing para SaaS | Acelera SaaS";
 const META_DESCRIPTION =

@@ -9,9 +9,9 @@ import { Footer } from "@/components/site/Footer";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { ScrollReveal } from "@/hooks/use-scroll-animation";
 import {
-import { useContactDialog } from "@/components/ContactDialogProvider";
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useContactDialog } from "@/components/ContactDialogProvider";
 
 export const Route = createFileRoute("/performance")({
   head: () => ({
