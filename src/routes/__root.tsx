@@ -50,7 +50,9 @@ export const Route = createRootRoute({
   }),
   shellComponent: () => (
     <RootDocument>
-      <Outlet />
+      <ContactDialogProvider>
+        <Outlet />
+      </ContactDialogProvider>
     </RootDocument>
   ),
   component: () => <Outlet />,
