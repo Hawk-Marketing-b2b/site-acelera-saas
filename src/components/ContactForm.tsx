@@ -92,11 +92,27 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
     }
   };
 
+  const formatPhone = (value: string) => {
+    const digits = value.replace(/\D/g, "").slice(0, 11);
+    if (digits.length === 0) return "";
+    if (digits.length <= 2) return `(${digits}`;
+    if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+    if (digits.length <= 10)
+      return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+  };
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "whatsapp") {
+      setFormData({ ...formData, whatsapp: formatPhone(value) });
+      return;
+    }
+    setFormData({ ...formData, [name]: value });
   };
+
 
   const inputClasses =
     "w-full px-4 py-3 bg-muted/50 border border-border/50 rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-200";
@@ -135,20 +151,23 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
         type="tel"
         name="whatsapp"
         required
+        inputMode="numeric"
         placeholder="WhatsApp*"
         value={formData.whatsapp}
         onChange={handleChange}
+        maxLength={16}
         className={inputClasses}
       />
 
       <input
-        type="url"
+        type="text"
         name="site"
         placeholder="Site da empresa"
         value={formData.site}
         onChange={handleChange}
         className={inputClasses}
       />
+
 
       <div className="relative">
         <select
