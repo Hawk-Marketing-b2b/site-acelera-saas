@@ -1,7 +1,6 @@
-/// <reference types="vite/client" />
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 import { ContactDialogProvider } from "@/components/ContactDialogProvider";
-import appCss from "../styles.css?url";
+import "../styles.css";
 
 function NotFoundComponent() {
   return (
@@ -25,36 +24,11 @@ function NotFoundComponent() {
   );
 }
 
-function RootDocument({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="pt-BR">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <HeadContent />
-        <link rel="stylesheet" href={appCss} />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { title: "Acelera SaaS" },
-    ],
-  }),
-  shellComponent: () => (
-    <RootDocument>
-      <ContactDialogProvider>
-        <Outlet />
-      </ContactDialogProvider>
-    </RootDocument>
+  component: () => (
+    <ContactDialogProvider>
+      <Outlet />
+    </ContactDialogProvider>
   ),
-  component: () => <Outlet />,
   notFoundComponent: NotFoundComponent,
 });
