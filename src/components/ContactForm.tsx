@@ -131,24 +131,27 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
 
       <div>
         <input
-          type="email"
-          name="email"
-          required
-          placeholder="Seu melhor e-mail*"
-          value={formData.email}
-          onChange={(e) => {
-            handleChange(e);
-            if (emailError) setEmailError("");
-          }}
-          className={`${inputClasses} ${emailError ? "ring-2 ring-red-500 border-red-500" : ""}`}
-        />
-        {emailError && (
-          <p className="mt-1 text-sm text-red-500">{emailError}</p>
-        )}
-      </div>
-
       <input
         type="tel"
+        name="whatsapp"
+        required
+        inputMode="numeric"
+        placeholder="WhatsApp*"
+        value={formData.whatsapp}
+        onChange={handleChange}
+        maxLength={16}
+        className={inputClasses}
+      />
+
+      <input
+        type="text"
+        name="site"
+        placeholder="Site da empresa"
+        value={formData.site}
+        onChange={handleChange}
+        className={inputClasses}
+      />
+
         name="whatsapp"
         required
         placeholder="WhatsApp*"
