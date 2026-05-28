@@ -1,5 +1,6 @@
-import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
-import "../styles.css";
+/// <reference types="vite/client" />
+import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
   return (
@@ -23,7 +24,34 @@ function NotFoundComponent() {
   );
 }
 
+function RootDocument({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="pt-BR">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <HeadContent />
+        <link rel="stylesheet" href={appCss} />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
 export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      { title: "Acelera SaaS" },
+    ],
+  }),
+  shellComponent: () => (
+    <RootDocument>
+      <Outlet />
+    </RootDocument>
+  ),
   component: () => <Outlet />,
   notFoundComponent: NotFoundComponent,
 });
