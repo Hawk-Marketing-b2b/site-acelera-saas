@@ -129,8 +129,6 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
         className={inputClasses}
       />
 
-      <div>
-        <input
       <input
         type="tel"
         name="whatsapp"
@@ -152,22 +150,6 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
         className={inputClasses}
       />
 
-        name="whatsapp"
-        required
-        placeholder="WhatsApp*"
-        value={formData.whatsapp}
-        onChange={handleChange}
-        className={inputClasses}
-      />
-
-      <input
-        type="url"
-        name="site"
-        placeholder="Site da empresa"
-        value={formData.site}
-        onChange={handleChange}
-        className={inputClasses}
-      />
 
       <div className="relative">
         <select
