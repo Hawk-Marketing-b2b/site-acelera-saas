@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { ContactDialogProvider } from "@/components/ContactDialogProvider";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -49,7 +50,9 @@ export const Route = createRootRoute({
   }),
   shellComponent: () => (
     <RootDocument>
-      <Outlet />
+      <ContactDialogProvider>
+        <Outlet />
+      </ContactDialogProvider>
     </RootDocument>
   ),
   component: () => <Outlet />,

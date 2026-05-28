@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { ShinyButton } from "@/components/ui/shiny-button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import ContactForm from "@/components/ContactForm";
+import { useContactDialog } from "@/components/ContactDialogProvider";
 
 const testimonials = [
   {
@@ -30,7 +28,8 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { open } = useContactDialog();
+
 
   return (
     <section id="depoimentos" className="py-[30px] md:py-24 px-4 relative overflow-hidden">
@@ -109,18 +108,10 @@ const TestimonialsSection = () => {
           className="flex justify-center mt-12"
           id="contato"
         >
-          <ShinyButton onClick={() => setIsDialogOpen(true)}>Falar com Especialista</ShinyButton>
+          <ShinyButton onClick={open}>Falar com Especialista</ShinyButton>
         </motion.div>
       </div>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Fale com um Especialista</DialogTitle>
-          </DialogHeader>
-          <ContactForm onSuccess={() => setIsDialogOpen(false)} />
-        </DialogContent>
-      </Dialog>
     </section>
   );
 };

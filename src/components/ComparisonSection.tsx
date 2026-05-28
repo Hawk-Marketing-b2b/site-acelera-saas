@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Award, X, Check } from "lucide-react";
 import { ShinyButton } from "@/components/ui/shiny-button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import ContactForm from "@/components/ContactForm";
+import { useContactDialog } from "@/components/ContactDialogProvider";
 import f1Car from "@/assets/f1-car-acelera.png";
 
 const comparisonData = [
@@ -17,7 +15,8 @@ const comparisonData = [
 ];
 
 const ComparisonSection = () => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { open } = useContactDialog();
+
 
   return (
     <section id="diferenciais" className="py-[30px] md:py-24 px-0 md:px-4 relative overflow-hidden">
@@ -99,18 +98,10 @@ const ComparisonSection = () => {
           viewport={{ once: true }}
           className="flex justify-center mt-12"
         >
-          <ShinyButton onClick={() => setIsDialogOpen(true)}>Falar com Especialista</ShinyButton>
+          <ShinyButton onClick={open}>Falar com Especialista</ShinyButton>
         </motion.div>
       </div>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Fale com um Especialista</DialogTitle>
-          </DialogHeader>
-          <ContactForm onSuccess={() => setIsDialogOpen(false)} />
-        </DialogContent>
-      </Dialog>
     </section>
   );
 };
