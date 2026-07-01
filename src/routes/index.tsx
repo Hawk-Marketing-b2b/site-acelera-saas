@@ -53,7 +53,7 @@ function ServicesSlider() {
   return (
     <>
       {/* Mobile: cards em coluna */}
-      <div className="md:hidden grid grid-cols-1 gap-5">
+      <div className="grid md:hidden grid-cols-1 gap-5">
         {services.map((s) => {
           const Icon = s.icon;
           return (
