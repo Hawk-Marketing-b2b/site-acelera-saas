@@ -52,20 +52,20 @@ function ServicesSlider() {
 
   return (
     <>
-      {/* Mobile: cards em coluna */}
-      <div className="grid md:hidden grid-cols-1 gap-5">
+      {/* Mobile/tablet: cards em coluna, sem slider */}
+      <div className="grid w-full grid-cols-1 gap-5 lg:hidden">
         {services.map((s) => {
           const Icon = s.icon;
           return (
             <Link
               key={s.href}
               to={s.href}
-              className="card-glass rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
+              className="card-glass flex w-full min-w-0 flex-col gap-4 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
             >
               <div className="grid size-12 place-items-center rounded-xl bg-gradient-button shadow-button">
                 <Icon className="size-5 text-primary-foreground" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <h3 className="font-display text-lg font-semibold mb-2 text-foreground">
                   {s.title}
                 </h3>
@@ -82,7 +82,7 @@ function ServicesSlider() {
       </div>
 
       {/* Desktop: slider com 3 cards */}
-      <div className="hidden md:flex items-center justify-center gap-4">
+      <div className="hidden lg:flex items-center justify-center gap-4">
         <button
           onClick={prev}
           aria-label="Anterior"
