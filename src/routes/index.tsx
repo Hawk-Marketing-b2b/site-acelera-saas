@@ -51,71 +51,103 @@ function ServicesSlider() {
   const getIndex = (offset: number) => (active + offset + services.length) % services.length;
 
   return (
-    <div className="relative flex items-center justify-center gap-4">
-      <button
-        onClick={prev}
-        aria-label="Anterior"
-        className="shrink-0 z-10 grid size-12 place-items-center rounded-full border border-border/60 bg-card/60 text-muted-foreground backdrop-blur transition-all duration-200 hover:border-primary/60 hover:text-foreground hover:scale-110"
-      >
-        <ChevronLeft className="size-5" />
-      </button>
-
-      <div className="flex items-center gap-4 w-full max-w-4xl py-4">
-        {[-1, 0, 1].map((offset) => {
-          const s = services[getIndex(offset)];
-          const isCenter = offset === 0;
+    <>
+      {/* Mobile: cards em coluna */}
+      <div className="md:hidden grid grid-cols-1 gap-5">
+        {services.map((s) => {
           const Icon = s.icon;
           return (
             <Link
-              key={getIndex(offset)}
+              key={s.href}
               to={s.href}
-              className={`flex-1 min-w-0 card-glass rounded-2xl p-7 flex flex-col gap-4 transition-all duration-500 cursor-pointer ${
-                isCenter
-                  ? "scale-105 border-primary/40 shadow-[0_4px_40px_-4px_hsl(283_76%_54%_/_0.35)] opacity-100"
-                  : "scale-95 opacity-50 hover:opacity-70"
-              }`}
+              className="card-glass rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
             >
-              <div
-                className={`grid size-12 place-items-center rounded-xl transition-all duration-300 ${
-                  isCenter ? "bg-gradient-button shadow-button" : "bg-muted/60"
-                }`}
-              >
-                <Icon className={`size-5 ${isCenter ? "text-primary-foreground" : "text-muted-foreground"}`} />
+              <div className="grid size-12 place-items-center rounded-xl bg-gradient-button shadow-button">
+                <Icon className="size-5 text-primary-foreground" />
               </div>
               <div>
-                <h3
-                  className={`font-display text-lg font-semibold mb-2 ${
-                    isCenter ? "text-foreground" : "text-muted-foreground"
-                  }`}
-                >
+                <h3 className="font-display text-lg font-semibold mb-2 text-foreground">
                   {s.title}
                 </h3>
-                <p
-                  className={`text-sm leading-relaxed ${
-                    isCenter ? "text-muted-foreground" : "text-muted-foreground/50"
-                  }`}
-                >
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {s.desc}
                 </p>
               </div>
-              {isCenter && (
-                <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-purple-light">
-                  Saiba mais <ArrowRight className="size-4" />
-                </span>
-              )}
+              <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-purple-light">
+                Saiba mais <ArrowRight className="size-4" />
+              </span>
             </Link>
           );
         })}
       </div>
 
-      <button
-        onClick={next}
-        aria-label="Próximo"
-        className="shrink-0 z-10 grid size-12 place-items-center rounded-full border border-border/60 bg-card/60 text-muted-foreground backdrop-blur transition-all duration-200 hover:border-primary/60 hover:text-foreground hover:scale-110"
-      >
-        <ChevronRight className="size-5" />
-      </button>
-    </div>
+      {/* Desktop: slider com 3 cards */}
+      <div className="hidden md:flex items-center justify-center gap-4">
+        <button
+          onClick={prev}
+          aria-label="Anterior"
+          className="shrink-0 z-10 grid size-12 place-items-center rounded-full border border-border/60 bg-card/60 text-muted-foreground backdrop-blur transition-all duration-200 hover:border-primary/60 hover:text-foreground hover:scale-110"
+        >
+          <ChevronLeft className="size-5" />
+        </button>
+
+        <div className="flex items-center gap-4 w-full max-w-4xl py-4">
+          {[-1, 0, 1].map((offset) => {
+            const s = services[getIndex(offset)];
+            const isCenter = offset === 0;
+            const Icon = s.icon;
+            return (
+              <Link
+                key={getIndex(offset)}
+                to={s.href}
+                className={`flex-1 min-w-0 card-glass rounded-2xl p-7 flex flex-col gap-4 transition-all duration-500 cursor-pointer ${
+                  isCenter
+                    ? "scale-105 border-primary/40 shadow-[0_4px_40px_-4px_hsl(283_76%_54%_/_0.35)] opacity-100"
+                    : "scale-95 opacity-50 hover:opacity-70"
+                }`}
+              >
+                <div
+                  className={`grid size-12 place-items-center rounded-xl transition-all duration-300 ${
+                    isCenter ? "bg-gradient-button shadow-button" : "bg-muted/60"
+                  }`}
+                >
+                  <Icon className={`size-5 ${isCenter ? "text-primary-foreground" : "text-muted-foreground"}`} />
+                </div>
+                <div>
+                  <h3
+                    className={`font-display text-lg font-semibold mb-2 ${
+                      isCenter ? "text-foreground" : "text-muted-foreground"
+                    }`}
+                  >
+                    {s.title}
+                  </h3>
+                  <p
+                    className={`text-sm leading-relaxed ${
+                      isCenter ? "text-muted-foreground" : "text-muted-foreground/50"
+                    }`}
+                  >
+                    {s.desc}
+                  </p>
+                </div>
+                {isCenter && (
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-purple-light">
+                    Saiba mais <ArrowRight className="size-4" />
+                  </span>
+                )}
+              </Link>
+            );
+          })}
+        </div>
+
+        <button
+          onClick={next}
+          aria-label="Próximo"
+          className="shrink-0 z-10 grid size-12 place-items-center rounded-full border border-border/60 bg-card/60 text-muted-foreground backdrop-blur transition-all duration-200 hover:border-primary/60 hover:text-foreground hover:scale-110"
+        >
+          <ChevronRight className="size-5" />
+        </button>
+      </div>
+    </>
   );
 }
 
