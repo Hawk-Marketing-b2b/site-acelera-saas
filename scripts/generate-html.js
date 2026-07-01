@@ -1,9 +1,27 @@
-import { readdirSync, writeFileSync } from 'fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
+import path from 'path';
 
-const assets = readdirSync('dist/client/assets');
+const clientDir = ['dist/client', 'dist'].find((dir) => existsSync(path.join(dir, 'assets')));
 
-const jsEntry = assets.find(f => f.startsWith('index-') && f.endsWith('.js') && !f.includes('MNgUKEw9'));
-const cssEntry = assets.find(f => f.endsWith('.css'));
+if (!clientDir) {
+  const distContents = existsSync('dist') ? readdirSync('dist').join(', ') : 'dist não existe';
+  throw new Error(`Pasta de assets não encontrada. Conteúdo de dist: ${distContents}`);
+}
+
+const assetsDir = path.join(clientDir, 'assets');
+const assets = readdirSync(assetsDir);
+
+const jsCandidates = assets.filter((f) => f.startsWith('index-') && f.endsWith('.js'));
+const jsEntry =
+  jsCandidates.find((f) => {
+    const content = readFileSync(path.join(assetsDir, f), 'utf8');
+    return content.includes('Root container #root') || content.includes('createRoot(');
+  }) ?? jsCandidates[0];
+const cssEntry = assets.find((f) => f.endsWith('.css'));
+
+if (!jsEntry) {
+  throw new Error(`Arquivo JS de entrada não encontrado em ${assetsDir}`);
+}
 
 console.log('JS encontrado:', jsEntry);
 console.log('CSS encontrado:', cssEntry);
@@ -26,6 +44,6 @@ const html = `<!DOCTYPE html>
 </body>
 </html>`;
 
-writeFileSync('dist/client/index.html', html);
-writeFileSync('dist/client/404.html', html);
+writeFileSync(path.join(clientDir, 'index.html'), html);
+writeFileSync(path.join(clientDir, '404.html'), html);
 console.log('index.html e 404.html gerados com sucesso!');
