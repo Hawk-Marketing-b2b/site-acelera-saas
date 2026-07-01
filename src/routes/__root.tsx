@@ -52,9 +52,11 @@ export const Route = createRootRoute({
     ],
   }),
   component: () => (
-    <ContactDialogProvider>
-      <Outlet />
-    </ContactDialogProvider>
+    <RootDocument>
+      <ContactDialogProvider>
+        <Outlet />
+      </ContactDialogProvider>
+    </RootDocument>
   ),
   notFoundComponent: NotFoundComponent,
 });
