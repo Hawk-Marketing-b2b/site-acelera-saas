@@ -27,9 +27,29 @@ jobs:
       - name: Generate index.html
         run: node scripts/generate-html.js
 
+      - name: Detect publish directory
+        run: |
+          if [ -f dist/client/index.html ]; then
+            echo "PUBLISH_DIR=./dist/client" >> "$GITHUB_ENV"
+          elif [ -f dist/index.html ]; then
+            echo "PUBLISH_DIR=./dist" >> "$GITHUB_ENV"
+          elif [ -f .output/public/index.html ]; then
+            echo "PUBLISH_DIR=./.output/public" >> "$GITHUB_ENV"
+          elif [ -f .output/server/public/index.html ]; then
+            echo "PUBLISH_DIR=./.output/server/public" >> "$GITHUB_ENV"
+          elif [ -f build/client/index.html ]; then
+            echo "PUBLISH_DIR=./build/client" >> "$GITHUB_ENV"
+          elif [ -f build/index.html ]; then
+            echo "PUBLISH_DIR=./build" >> "$GITHUB_ENV"
+          else
+            echo "Nenhuma pasta publicável encontrada"
+            ls -la
+            exit 1
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
-          publish_dir: ${{ hashFiles('dist/client/index.html') != '' && './dist/client' || './dist' }}
+          publish_dir: ${{ env.PUBLISH_DIR }}
           cname: acelerasaas.com

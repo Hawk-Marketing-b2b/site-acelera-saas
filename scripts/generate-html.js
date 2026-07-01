@@ -1,11 +1,54 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 
-const clientDir = ['dist/client', 'dist'].find((dir) => existsSync(path.join(dir, 'assets')));
+const outputRoots = ['dist/client', 'dist', '.output/public', '.output/server/public', 'build/client', 'build'];
+
+function listDir(dir) {
+  return existsSync(dir) ? readdirSync(dir).join(', ') : `${dir} não existe`;
+}
+
+function findClientDir() {
+  const directMatch = outputRoots.find((dir) => existsSync(path.join(dir, 'assets')));
+
+  if (directMatch) {
+    return directMatch;
+  }
+
+  const rootsToSearch = ['dist', '.output', 'build'].filter((dir) => existsSync(dir));
+
+  for (const root of rootsToSearch) {
+    const stack = [root];
+
+    while (stack.length) {
+      const current = stack.pop();
+      const assetsPath = path.join(current, 'assets');
+
+      if (existsSync(assetsPath)) {
+        return current;
+      }
+
+      for (const entry of readdirSync(current, { withFileTypes: true })) {
+        if (entry.isDirectory()) {
+          stack.push(path.join(current, entry.name));
+        }
+      }
+    }
+  }
+
+  return null;
+}
+
+const clientDir = findClientDir();
 
 if (!clientDir) {
-  const distContents = existsSync('dist') ? readdirSync('dist').join(', ') : 'dist não existe';
-  throw new Error(`Pasta de assets não encontrada. Conteúdo de dist: ${distContents}`);
+  throw new Error(
+    [
+      'Pasta de assets não encontrada após o build.',
+      `Conteúdo de dist: ${listDir('dist')}`,
+      `Conteúdo de .output: ${listDir('.output')}`,
+      `Conteúdo de build: ${listDir('build')}`,
+    ].join('\n'),
+  );
 }
 
 const assetsDir = path.join(clientDir, 'assets');
@@ -25,6 +68,7 @@ if (!jsEntry) {
 
 console.log('JS encontrado:', jsEntry);
 console.log('CSS encontrado:', cssEntry);
+console.log('Pasta do site encontrada:', clientDir);
 
 const cssLink = cssEntry ? `<link rel="stylesheet" href="/assets/${cssEntry}">` : '';
 
