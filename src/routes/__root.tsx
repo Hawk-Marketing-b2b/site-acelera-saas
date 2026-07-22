@@ -12,7 +12,7 @@ function RootDocument({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <div id="root">{children}</div>
+        {children}
         <Scripts />
       </body>
     </html>
@@ -51,7 +51,6 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" },
     ],
   }),
-  shellComponent: RootDocument,
   component: () => (
     <ContactDialogProvider>
       <Outlet />
