@@ -58,7 +58,12 @@ const jsCandidates = assets.filter((f) => f.startsWith('index-') && f.endsWith('
 const jsEntry =
   jsCandidates.find((f) => {
     const content = readFileSync(path.join(assetsDir, f), 'utf8');
-    return content.includes('Root container #root') || content.includes('createRoot(');
+    return (
+      content.includes('Root container #root') ||
+      content.includes('createRoot(') ||
+      content.includes('hydrateRoot(') ||
+      content.includes('StartClient')
+    );
   }) ?? jsCandidates[0];
 const cssEntry = assets.find((f) => f.endsWith('.css'));
 
