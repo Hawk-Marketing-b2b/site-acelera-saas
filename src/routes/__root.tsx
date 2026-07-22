@@ -12,7 +12,7 @@ function RootDocument({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <div id="root">{children}</div>
+        {children}
         <Scripts />
       </body>
     </html>
