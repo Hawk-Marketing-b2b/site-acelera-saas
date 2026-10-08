@@ -9,43 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WebDesignRouteImport } from './routes/web-design'
-import { Route as VendasRouteImport } from './routes/vendas'
-import { Route as PerformanceRouteImport } from './routes/performance'
-import { Route as InboundMarketingRouteImport } from './routes/inbound-marketing'
-import { Route as IaEAutomacaoRouteImport } from './routes/ia-e-automacao'
-import { Route as ComercialRouteImport } from './routes/comercial'
-import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as ComercialRouteImport } from './routes/comercial'
+import { Route as IaEAutomacaoRouteImport } from './routes/ia-e-automacao'
+import { Route as InboundMarketingRouteImport } from './routes/inbound-marketing'
+import { Route as PerformanceRouteImport } from './routes/performance'
+import { Route as VendasRouteImport } from './routes/vendas'
+import { Route as WebDesignRouteImport } from './routes/web-design'
 
-const WebDesignRoute = WebDesignRouteImport.update({
-  id: '/web-design',
-  path: '/web-design',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VendasRoute = VendasRouteImport.update({
-  id: '/vendas',
-  path: '/vendas',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PerformanceRoute = PerformanceRouteImport.update({
-  id: '/performance',
-  path: '/performance',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InboundMarketingRoute = InboundMarketingRouteImport.update({
-  id: '/inbound-marketing',
-  path: '/inbound-marketing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IaEAutomacaoRoute = IaEAutomacaoRouteImport.update({
-  id: '/ia-e-automacao',
-  path: '/ia-e-automacao',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ComercialRoute = ComercialRouteImport.update({
-  id: '/comercial',
-  path: '/comercial',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SplatRoute = SplatRouteImport.update({
@@ -53,9 +28,34 @@ const SplatRoute = SplatRouteImport.update({
   path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ComercialRoute = ComercialRouteImport.update({
+  id: '/comercial',
+  path: '/comercial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IaEAutomacaoRoute = IaEAutomacaoRouteImport.update({
+  id: '/ia-e-automacao',
+  path: '/ia-e-automacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InboundMarketingRoute = InboundMarketingRouteImport.update({
+  id: '/inbound-marketing',
+  path: '/inbound-marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerformanceRoute = PerformanceRouteImport.update({
+  id: '/performance',
+  path: '/performance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VendasRoute = VendasRouteImport.update({
+  id: '/vendas',
+  path: '/vendas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WebDesignRoute = WebDesignRouteImport.update({
+  id: '/web-design',
+  path: '/web-design',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -136,46 +136,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/web-design': {
-      id: '/web-design'
-      path: '/web-design'
-      fullPath: '/web-design'
-      preLoaderRoute: typeof WebDesignRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/vendas': {
-      id: '/vendas'
-      path: '/vendas'
-      fullPath: '/vendas'
-      preLoaderRoute: typeof VendasRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/performance': {
-      id: '/performance'
-      path: '/performance'
-      fullPath: '/performance'
-      preLoaderRoute: typeof PerformanceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/inbound-marketing': {
-      id: '/inbound-marketing'
-      path: '/inbound-marketing'
-      fullPath: '/inbound-marketing'
-      preLoaderRoute: typeof InboundMarketingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ia-e-automacao': {
-      id: '/ia-e-automacao'
-      path: '/ia-e-automacao'
-      fullPath: '/ia-e-automacao'
-      preLoaderRoute: typeof IaEAutomacaoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/comercial': {
-      id: '/comercial'
-      path: '/comercial'
-      fullPath: '/comercial'
-      preLoaderRoute: typeof ComercialRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$': {
@@ -185,11 +150,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/comercial': {
+      id: '/comercial'
+      path: '/comercial'
+      fullPath: '/comercial'
+      preLoaderRoute: typeof ComercialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ia-e-automacao': {
+      id: '/ia-e-automacao'
+      path: '/ia-e-automacao'
+      fullPath: '/ia-e-automacao'
+      preLoaderRoute: typeof IaEAutomacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inbound-marketing': {
+      id: '/inbound-marketing'
+      path: '/inbound-marketing'
+      fullPath: '/inbound-marketing'
+      preLoaderRoute: typeof InboundMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/performance': {
+      id: '/performance'
+      path: '/performance'
+      fullPath: '/performance'
+      preLoaderRoute: typeof PerformanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vendas': {
+      id: '/vendas'
+      path: '/vendas'
+      fullPath: '/vendas'
+      preLoaderRoute: typeof VendasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/web-design': {
+      id: '/web-design'
+      path: '/web-design'
+      fullPath: '/web-design'
+      preLoaderRoute: typeof WebDesignRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
