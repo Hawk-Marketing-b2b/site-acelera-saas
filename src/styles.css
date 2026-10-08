@@ -107,6 +107,20 @@
     scroll-behavior: smooth;
   }
 
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href],
+  summary,
+  label[for],
+  select {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
