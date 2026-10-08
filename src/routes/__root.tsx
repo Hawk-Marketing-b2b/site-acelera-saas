@@ -1,5 +1,6 @@
-import { Outlet, Link, HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
+import { Outlet, HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { ContactDialogProvider } from "@/components/ContactDialogProvider";
+import { NotFound } from "@/components/site/NotFound";
 import type { ReactNode } from "react";
 import "../styles.css";
 
@@ -19,28 +20,6 @@ function RootDocument({ children }: { children: ReactNode }) {
   );
 }
 
-function NotFoundComponent() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export const Route = createRootRoute({
   head: () => ({
     links: [
@@ -51,11 +30,15 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" },
     ],
   }),
+  // O shellComponent é OBRIGATÓRIO no TanStack Start: é ele que gera <html>, <head>
+  // (CSS + meta tags por página) e <Scripts /> (o JS que hidrata a página).
+  // Sem ele o preview do Lovable fica sem estilo/JS e o build estático sai sem HTML.
+  // NÃO remover e NÃO criar src/client.tsx com createRoot("#root").
+  shellComponent: RootDocument,
   component: () => (
     <ContactDialogProvider>
       <Outlet />
     </ContactDialogProvider>
   ),
-  notFoundComponent: NotFoundComponent,
+  notFoundComponent: NotFound,
 });
-

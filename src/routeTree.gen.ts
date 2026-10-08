@@ -15,6 +15,7 @@ import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as InboundMarketingRouteImport } from './routes/inbound-marketing'
 import { Route as IaEAutomacaoRouteImport } from './routes/ia-e-automacao'
 import { Route as ComercialRouteImport } from './routes/comercial'
+import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WebDesignRoute = WebDesignRouteImport.update({
@@ -47,6 +48,11 @@ const ComercialRoute = ComercialRouteImport.update({
   path: '/comercial',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -55,6 +61,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/comercial': typeof ComercialRoute
   '/ia-e-automacao': typeof IaEAutomacaoRoute
   '/inbound-marketing': typeof InboundMarketingRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/comercial': typeof ComercialRoute
   '/ia-e-automacao': typeof IaEAutomacaoRoute
   '/inbound-marketing': typeof InboundMarketingRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/comercial': typeof ComercialRoute
   '/ia-e-automacao': typeof IaEAutomacaoRoute
   '/inbound-marketing': typeof InboundMarketingRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/$'
     | '/comercial'
     | '/ia-e-automacao'
     | '/inbound-marketing'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/$'
     | '/comercial'
     | '/ia-e-automacao'
     | '/inbound-marketing'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/$'
     | '/comercial'
     | '/ia-e-automacao'
     | '/inbound-marketing'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SplatRoute: typeof SplatRoute
   ComercialRoute: typeof ComercialRoute
   IaEAutomacaoRoute: typeof IaEAutomacaoRoute
   InboundMarketingRoute: typeof InboundMarketingRoute
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComercialRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SplatRoute: SplatRoute,
   ComercialRoute: ComercialRoute,
   IaEAutomacaoRoute: IaEAutomacaoRoute,
   InboundMarketingRoute: InboundMarketingRoute,
@@ -187,3 +208,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
