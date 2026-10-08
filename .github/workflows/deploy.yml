@@ -3,55 +3,63 @@ name: Deploy
 on:
   push:
     branches: [main]
+  workflow_dispatch: # permite re-deploy manual pela aba Actions
 
 permissions:
   contents: write
+
+# O Lovable faz vários commits seguidos. Sem isso, deploys rodam em paralelo e um
+# build ANTIGO pode terminar depois e sobrescrever o novo no ar.
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      # Node fixo (antes era "bun latest": cada deploy podia rodar numa versão diferente)
+      - uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 22
+          cache: npm
 
+      # npm + registry público. O bun.lock gerado pelo Lovable aponta parte dos pacotes
+      # para o cache privado do Lovable, que não é acessível fora da plataforma.
+      # "npm install" (e não "npm ci") tolera quando o Lovable mexe no package.json
+      # sem atualizar o package-lock.json.
       - name: Install dependencies
-        run: bun install
+        run: npm install --no-audit --no-fund
 
-      - name: Build
-        run: bun run build
+      # Pré-renderiza cada página em HTML estático (ver vite.config.ts).
+      # Se qualquer página quebrar no render, o build falha e NADA é publicado.
+      - name: Build (static prerender)
+        run: npm run build:static
 
-      - name: Generate index.html
-        run: node scripts/generate-html.js
-
-      - name: Detect publish directory
+      - name: Smoke test
         run: |
-          if [ -f dist/client/index.html ]; then
-            echo "PUBLISH_DIR=./dist/client" >> "$GITHUB_ENV"
-          elif [ -f dist/index.html ]; then
-            echo "PUBLISH_DIR=./dist" >> "$GITHUB_ENV"
-          elif [ -f .output/public/index.html ]; then
-            echo "PUBLISH_DIR=./.output/public" >> "$GITHUB_ENV"
-          elif [ -f .output/server/public/index.html ]; then
-            echo "PUBLISH_DIR=./.output/server/public" >> "$GITHUB_ENV"
-          elif [ -f build/client/index.html ]; then
-            echo "PUBLISH_DIR=./build/client" >> "$GITHUB_ENV"
-          elif [ -f build/index.html ]; then
-            echo "PUBLISH_DIR=./build" >> "$GITHUB_ENV"
-          else
-            echo "Nenhuma pasta publicável encontrada"
-            ls -la
-            exit 1
-          fi
+          set -e
+          OUT=dist/client
+          for page in index.html 404.html inbound-marketing/index.html performance/index.html \
+                      web-design/index.html vendas/index.html comercial/index.html ia-e-automacao/index.html; do
+            f="$OUT/$page"
+            test -s "$f"                         || { echo "::error::faltando $f"; exit 1; }
+            grep -q '<html'            "$f"      || { echo "::error::$f sem <html>"; exit 1; }
+            grep -q 'rel="stylesheet" href="/assets/' "$f" || { echo "::error::$f sem CSS"; exit 1; }
+            grep -q '/assets/.*\.js'   "$f"      || { echo "::error::$f sem JS"; exit 1; }
+          done
+          for page in index.html inbound-marketing/index.html performance/index.html; do
+            grep -q '<h1' "$OUT/$page" || { echo "::error::$OUT/$page sem conteúdo pré-renderizado"; exit 1; }
+          done
+          echo "OK: $(find $OUT -name '*.html' | wc -l) páginas HTML"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ env.PUBLISH_DIR }}
+          publish_dir: ./dist/client
           cname: acelerasaas.com
           force_orphan: true
           commit_message: "deploy: ${{ github.event.head_commit.message }} (${{ github.sha }})"
