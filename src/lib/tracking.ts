@@ -27,9 +27,6 @@ export function readConsent(): ConsentHistory | null {
     return value as ConsentHistory;
   } catch { return null; }
 }
-function optOut() {
-  return (navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl === true || navigator.doNotTrack === "1";
-}
 export function trackingPermitted() {
   if (!resolved || typeof window === "undefined") return false;
   return true;
