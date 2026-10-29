@@ -2,6 +2,7 @@ import { Outlet, HeadContent, Scripts, createRootRoute } from "@tanstack/react-r
 import { ContactDialogProvider } from "@/components/ContactDialogProvider";
 import { NotFound } from "@/components/site/NotFound";
 import type { ReactNode } from "react";
+import { TrackingConsent } from "@/components/TrackingConsent";
 import "../styles.css";
 
 function RootDocument({ children }: { children: ReactNode }) {
@@ -38,6 +39,7 @@ export const Route = createRootRoute({
   component: () => (
     <ContactDialogProvider>
       <Outlet />
+      <TrackingConsent />
     </ContactDialogProvider>
   ),
   notFoundComponent: NotFound,

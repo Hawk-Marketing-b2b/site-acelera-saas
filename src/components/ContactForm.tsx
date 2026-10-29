@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { toast } from "sonner";
+import { reportLead, trackingPermitted } from "@/lib/tracking";
 
 interface ContactFormProps {
   onSuccess?: () => void;
@@ -51,6 +52,7 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
     e.preventDefault();
     setEmailError("");
     setIsLoading(true);
+    const permittedAtSubmission = trackingPermitted();
 
     try {
       const payload = new URLSearchParams({
@@ -76,6 +78,9 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
         mode: "no-cors",
         body: payload.toString(),
       });
+
+      // no-cors confirms browser completion only, not n8n receipt.
+      reportLead(permittedAtSubmission);
 
       toast.success("Enviado com sucesso!", {
         description: "Em breve um especialista entrará em contato.",
