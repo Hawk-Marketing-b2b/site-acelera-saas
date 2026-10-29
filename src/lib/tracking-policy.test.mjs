@@ -1,8 +1,9 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { GTM_ID, PIXEL_ID, advertisingAllowed, canReportLead, parseTrace } from "./tracking-policy.ts";
+import { GTM_ID, GTM_READY, PIXEL_ID, advertisingAllowed, canReportLead, parseTrace } from "./tracking-policy.ts";
 describe("Requested tracking rules", () => {
   it("uses the requested GTM container", () => assert.equal(GTM_ID, "GTM-NQZH2L93"));
+  it("keeps the unaudited personal-data container disabled", () => assert.equal(GTM_READY, false));
   it("uses the requested Meta pixel", () => assert.equal(PIXEL_ID, "1051251949505769"));
   it("blocks regulated and unknown regions until acceptance", () => {
     for (const region of ["BR", "DE", "GB", null, "XX", "T1"]) assert.equal(advertisingAllowed(region, undefined), false);

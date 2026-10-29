@@ -1,4 +1,7 @@
 export const GTM_ID = "GTM-NQZH2L93";
+// Published container currently collects personal matching data on formSubmit.
+// Enable only after those tags are removed and consent handling is verified.
+export const GTM_READY = false;
 export const PIXEL_ID = "1051251949505769";
 export const CONSENT_KEY = "acelera-advertising-consent-v1";
 export const NOTICE_VERSION = "2026-10-29-v1";

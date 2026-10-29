@@ -1,4 +1,4 @@
-import { advertisingAllowed, canReportLead, CONSENT_KEY, GTM_ID, PIXEL_ID, type ConsentHistory } from "./tracking-policy";
+import { advertisingAllowed, canReportLead, CONSENT_KEY, GTM_ID, GTM_READY, PIXEL_ID, type ConsentHistory } from "./tracking-policy";
 
 type Pixel = ((...args: unknown[]) => void) & {
   callMethod?: (...args: unknown[]) => void;
@@ -52,12 +52,14 @@ function install() {
   gtag("consent", "default", { ad_storage: "denied", analytics_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" });
   // No personal matching is installed. Tags configured in GTM must respect consent.
   gtag("consent", "update", { ad_storage: "granted", analytics_storage: "denied", ad_user_data: "denied", ad_personalization: "granted" });
-  window.dataLayer?.push({ "gtm.start": Date.now(), event: "gtm.js" });
-  const gtm = document.createElement("script");
-  gtm.id = "acelera-gtm";
-  gtm.async = true;
-  gtm.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
-  document.head.appendChild(gtm);
+  if (GTM_READY) {
+    window.dataLayer?.push({ "gtm.start": Date.now(), event: "gtm.js" });
+    const gtm = document.createElement("script");
+    gtm.id = "acelera-gtm";
+    gtm.async = true;
+    gtm.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+    document.head.appendChild(gtm);
+  }
   const pixel: Pixel = Object.assign(function (...args: unknown[]) {
     if (pixel.callMethod) pixel.callMethod.apply(pixel, args);
     else pixel.queue.push(args);
@@ -67,6 +69,7 @@ function install() {
   window._fbq = pixel;
   pixel("consent", "grant");
   pixel("init", PIXEL_ID, {}, { agent: "lovable" });
+  pixel("set", "autoConfig", false, PIXEL_ID);
   const script = document.createElement("script");
   script.id = "acelera-meta-pixel";
   script.async = true;
