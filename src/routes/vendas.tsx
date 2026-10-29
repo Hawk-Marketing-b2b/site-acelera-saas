@@ -20,6 +20,7 @@ export const Route = createFileRoute("/vendas")({
       { property: "og:title", content: "Consultoria de Vendas para SaaS | Acelera SaaS" },
       { property: "og:description", content: "Transforme oportunidades em clientes com um processo de vendas estruturado para empresas de tecnologia." },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: VendasPage,

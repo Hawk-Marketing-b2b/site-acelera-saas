@@ -20,6 +20,7 @@ export const Route = createFileRoute("/comercial")({
       { property: "og:title", content: "Estruturação Comercial para SaaS | Acelera SaaS" },
       { property: "og:description", content: "Organize a área comercial da sua empresa de tecnologia e crie um processo escalável de vendas." },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ComercialPage,

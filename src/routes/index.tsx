@@ -29,6 +29,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Agência de Marketing para SaaS | Acelera SaaS" },
       { property: "og:description", content: "Agência de marketing para SaaS B2B. Geramos demanda qualificada com metodologia validada em mais de 400 projetos." },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),

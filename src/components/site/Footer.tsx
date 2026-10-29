@@ -94,9 +94,9 @@ export function Footer() {
               © {new Date().getFullYear()} Acelera SaaS. Todos os direitos reservados.
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-white/40 hover:text-white text-sm transition-colors">
+              <Link to="/privacidade" className="text-white/40 hover:text-white text-sm transition-colors">
                 Política de Privacidade
-              </a>
+              </Link>
               <a href="#" className="text-white/40 hover:text-white text-sm transition-colors">
                 Termos de Uso
               </a>
