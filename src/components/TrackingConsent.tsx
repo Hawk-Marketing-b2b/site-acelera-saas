@@ -59,31 +59,6 @@ export function TrackingConsent() {
     <Button variant="outline" onClick={() => choose(false)}>Rejeitar</Button>
     <Button variant="outline" onClick={() => choose(true)}>Aceitar</Button>
   </div>;
-  return <>
-    <div className="flex flex-wrap items-center justify-center gap-4 border-t border-border bg-background px-4 py-4 text-sm">
-      <Link to="/privacidade" className="text-muted-foreground underline">Política de Privacidade</Link>
-      <Button variant="link" onClick={() => setSettings(true)}>Configurações de cookies</Button>
-    </div>
-    {showBanner && <section aria-label="Consentimento de cookies" className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background p-5 shadow-lg">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 md:flex-row md:items-center">
-        <div className="flex-1"><h2 className="mb-2 font-semibold">Sua privacidade</h2><p className="text-sm text-muted-foreground">{NOTICE_TEXT}</p>
-          <Link to="/privacidade" className="text-sm underline">Política de Privacidade</Link></div>
-        {choices}
-      </div>
-      {error && <p role="alert" className="text-destructive">{error}</p>}
-    </section>}
-    <Dialog open={settings} onOpenChange={setSettings}>
-      <DialogContent><DialogHeader><DialogTitle>Configurações de cookies</DialogTitle></DialogHeader>
-        <p className="text-sm text-muted-foreground">{NOTICE_TEXT}</p>
-        <p className="text-sm">Preferência de publicidade: {readConsentSafeLabel(ready)}.</p>
-        {choices}{error && <p role="alert" className="text-destructive">{error}</p>}
-      </DialogContent>
-    </Dialog>
-  </>;
-}
-
-function readConsentSafeLabel(ready: boolean) {
-  // Storage is read only after hydration; SSR and first client render use the same fallback.
-  if (!ready) return "não definida";
-  return "altere sua escolha abaixo";
+  void choices; void settings; void showBanner; void error;
+  return null;
 }

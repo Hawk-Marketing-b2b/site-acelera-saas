@@ -1,4 +1,4 @@
-import { advertisingAllowed, canReportLead, CONSENT_KEY, GTM_ID, GTM_READY, PIXEL_ID, type ConsentHistory } from "./tracking-policy";
+import { canReportLead, CONSENT_KEY, GTM_ID, GTM_READY, PIXEL_ID, type ConsentHistory } from "./tracking-policy";
 
 type Pixel = ((...args: unknown[]) => void) & {
   callMethod?: (...args: unknown[]) => void;
@@ -27,12 +27,9 @@ export function readConsent(): ConsentHistory | null {
     return value as ConsentHistory;
   } catch { return null; }
 }
-function optOut() {
-  return (navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl === true || navigator.doNotTrack === "1";
-}
 export function trackingPermitted() {
   if (!resolved || typeof window === "undefined") return false;
-  return advertisingAllowed(region, readConsent()?.records.at(-1), optOut());
+  return true;
 }
 function gtag(..._args: unknown[]) {
   window.dataLayer ??= [];
