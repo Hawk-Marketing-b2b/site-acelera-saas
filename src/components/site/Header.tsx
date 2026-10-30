@@ -223,12 +223,6 @@ export function Header() {
         </div>
       </div>
 
-      <span
-        className={`pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-button transition-opacity duration-300 ${
-          solid ? "opacity-70" : "opacity-0"
-        }`}
-      />
-
     </header>
   );
 }
