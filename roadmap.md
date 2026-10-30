@@ -13,3 +13,8 @@
 - [x] Verificar formulário na página e no diálogo com envio simulado, payload e Lead preservados, tags carregadas, seis páginas de serviço sem erros e apresentação em três tamanhos de tela.
 - [x] Trocar a fonte do site para Montserrat e aumentar o título inicial; "NÃO" em degradê rosa, "precisa" em rosa, resto branco.
 - Observação: o teste antigo que espera GTM desligado falha porque o contêiner foi ligado anteriormente a pedido do usuário; nenhuma configuração de rastreamento foi alterada nesta tarefa.
+
+# Formulário de contato
+- [x] Trocar as duas perguntas: "Qual o seu faturamento mensal?" (7 faixas) e "Quantos usuários ativos tem seu SaaS?" (8 faixas).
+- [x] Adicionar Instagram e tornar site e Instagram obrigatórios; envio simulado confirma o campo no payload e o envio vazio é bloqueado.
+- [x] Atualizar a página /privacidade: lista de campos coletados e correção da frase sobre o GTM, que está ligado.
