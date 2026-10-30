@@ -175,6 +175,11 @@ export function Header() {
               )}
             </button>
           </div>
+          <span
+            className={`pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-button transition-opacity duration-300 ${
+              solid ? "opacity-70" : "opacity-0"
+            }`}
+          />
         </div>
       </div>
 
@@ -191,13 +196,16 @@ export function Header() {
           }}
           className="flex min-h-[calc(100vh-4rem)] flex-col bg-background/95 px-6 pb-10 pt-2 backdrop-blur-xl"
         >
-          <nav aria-label="Seções (mobile)" className="flex flex-col">
+          <nav
+            aria-label="Seções (mobile)"
+            className="flex flex-1 flex-col justify-center"
+          >
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.label}
                 href={navHref(item.hash)}
                 onClick={() => setMenuOpen(false)}
-                className="border-b border-border/40 py-3 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground transition-colors duration-200 last:border-b-0 hover:text-foreground"
+                className="border-b border-border/40 py-4 text-sm font-bold uppercase tracking-[0.16em] text-muted-foreground transition-colors duration-200 last:border-b-0 hover:text-foreground"
               >
                 {item.label}
               </a>
