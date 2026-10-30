@@ -231,6 +231,11 @@
     box-shadow: var(--shadow-glow);
   }
 
+  .shadow-header {
+    box-shadow: var(--shadow-header);
+  }
+
+
   .glow-orb {
     position: absolute;
     border-radius: 9999px;
