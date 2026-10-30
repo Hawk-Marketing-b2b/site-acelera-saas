@@ -27,6 +27,7 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
     email: "",
     whatsapp: "",
     site: "",
+    instagram: "",
     segmento: "",
     receita: "",
   });
@@ -60,6 +61,7 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
         email: formData.email,
         whatsapp: formData.whatsapp,
         site: formData.site,
+        instagram: formData.instagram,
         segmento: formData.segmento,
         receita: formData.receita,
         utm_source: utmData.utm_source,
@@ -167,8 +169,19 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
       <input
         type="text"
         name="site"
-        placeholder="Site da empresa"
+        required
+        placeholder="Site da empresa*"
         value={formData.site}
+        onChange={handleChange}
+        className={inputClasses}
+      />
+
+      <input
+        type="text"
+        name="instagram"
+        required
+        placeholder="Instagram*"
+        value={formData.instagram}
         onChange={handleChange}
         className={inputClasses}
       />
@@ -182,13 +195,14 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
           onChange={handleChange}
           className={`${inputClasses} min-w-0 appearance-none pr-10 text-xs lg:text-sm`}
         >
-          <option value="" disabled>Qual é o segmento do seu SaaS?*</option>
-          <option value="erp">ERP / Gestão</option>
-          <option value="crm">CRM / Vendas</option>
-          <option value="marketing">Marketing / Automação</option>
-          <option value="rh">RH / Gestão de Pessoas</option>
-          <option value="financeiro">Financeiro / Contábil</option>
-          <option value="outros">Outros</option>
+          <option value="" disabled>Qual o seu faturamento mensal?*</option>
+          <option value="ate-10k">Até R$ 10 mil</option>
+          <option value="10k-30k">De R$ 10 mil a R$ 30 mil</option>
+          <option value="30k-50k">De R$ 30 mil a R$ 50 mil</option>
+          <option value="50k-100k">De R$ 50 mil a R$ 100 mil</option>
+          <option value="100k-250k">De R$ 100 mil a R$ 250 mil</option>
+          <option value="250k-500k">De R$ 250 mil a R$ 500 mil</option>
+          <option value="mais-500k">Mais de R$ 500 mil</option>
         </select>
         <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
       </div>
@@ -201,12 +215,15 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
           onChange={handleChange}
           className={`${inputClasses} min-w-0 appearance-none pr-10 text-xs lg:text-sm`}
         >
-          <option value="" disabled>Qual sua receita recorrente mensal?*</option>
-          <option value="ate-50k">Até R$ 50mil</option>
-          <option value="50k-200k">R$ 50mil - R$ 200mil</option>
-          <option value="200k-500k">R$ 200mil - R$ 500mil</option>
-          <option value="500k-1m">R$ 500mil - R$ 1 milhão</option>
-          <option value="acima-1m">Acima de R$ 1 milhão</option>
+          <option value="" disabled>Quantos usuários ativos tem seu SaaS?*</option>
+          <option value="sem-usuarios">Ainda não tenho usuários ativos</option>
+          <option value="ate-10">Até 10 usuários</option>
+          <option value="10-50">De 10 a 50</option>
+          <option value="50-200">De 50 a 200</option>
+          <option value="200-500">De 200 a 500</option>
+          <option value="500-1000">De 500 a 1.000</option>
+          <option value="1000-5000">De 1.000 a 5.000</option>
+          <option value="acima-5000">Acima de 5.000</option>
         </select>
         <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
       </div>
