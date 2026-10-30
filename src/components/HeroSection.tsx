@@ -46,9 +46,7 @@ const HeroSection = () => {
             className="text-xl md:text-[22px] font-medium text-foreground leading-relaxed max-w-2xl mx-auto opacity-0 animate-fade-up"
             style={{ animationDelay: "300ms", animationFillMode: "forwards" }}
           >
-            Geramos demanda qualificada para empresas de software B2B com uma metodologia validada em mais de{" "}
-            <strong className="text-foreground">400 projetos</strong> e{" "}
-            <strong className="text-foreground">20 anos</strong> de experiência.
+            Somos um Ecossistema de Soluções para SaaS, desde o Desenvolvimento de Ideias e MVP para Saas que estão começando, até a Escala de SaaS que faturam mais de R$100 mil por mês.
           </p>
 
           <div
