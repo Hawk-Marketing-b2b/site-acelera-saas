@@ -9,4 +9,6 @@
 # Cabeçalho
 - [x] Refazer o cabeçalho: símbolo + "Acelera SaaS", navegação por seções com destaque da seção ativa, CTA gradiente.
 - [x] Menu do celular em tela cheia, com o formulário abrindo por dentro dele; verificado no navegador.
-- [ ] Ajustar o hero: o acento de "NÃO" encosta na linha de cima e o selo "O maior ecossistema..." tem contraste baixo.
+- [x] Colocar o formulário ao lado do texto inicial, corrigir letras cortadas e contraste do selo, e remover o fundo animado.
+- [x] Verificar formulário na página e no diálogo com envio simulado, payload e Lead preservados, tags carregadas, seis páginas de serviço sem erros e apresentação em três tamanhos de tela.
+- Observação: o teste antigo que espera GTM desligado falha porque o contêiner foi ligado anteriormente a pedido do usuário; nenhuma configuração de rastreamento foi alterada nesta tarefa.

@@ -1,79 +1,42 @@
-import { ArrowRight } from "lucide-react";
-import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ShinyButton } from "@/components/ui/shiny-button";
 import ContactForm from "./ContactForm";
-import AuroraBackground from "./AuroraBackground";
 import f1Car from "@/assets/f1-car-acelera.png";
 
 const HeroSection = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
-      <AuroraBackground />
-
+    <section className="relative bg-background pt-32 pb-12 lg:pt-40 lg:pb-16">
       <div className="absolute -right-20 bottom-0 w-[600px] h-[300px] opacity-[0.07] pointer-events-none hidden lg:block">
         <img src={f1Car} alt="" className="w-full h-full object-contain" />
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none" />
-
-      <div className="w-full px-4 relative z-10 pt-24 pb-8 md:py-32">
-        <div className="max-w-5xl mx-auto text-center space-y-8 flex flex-col items-center">
-          <div
-            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-border/50 bg-muted/30 backdrop-blur-sm opacity-0 animate-fade-up"
-            style={{ animationDelay: "100ms", animationFillMode: "forwards" }}
-          >
-            <span className="text-sm font-medium text-muted-foreground">
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-6 md:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] md:gap-8 lg:gap-16 lg:px-8">
+        <div className="min-w-0 space-y-6 lg:space-y-8">
+          <div className="inline-flex max-w-full items-center border-l-2 border-primary pl-3">
+            <span className="text-sm font-medium leading-relaxed text-foreground">
               O maior ecossistema de vendas para SaaS
             </span>
           </div>
 
-          <div
-            className="space-y-4 opacity-0 animate-fade-up"
-            style={{ animationDelay: "200ms", animationFillMode: "forwards" }}
-          >
-            <h1 className="font-display h1-hero heading-gradient">
+            <h1 className="home-hero-title font-display heading-gradient">
               Dono de SaaS, você NÃO precisa de uma Agência de Marketing.
             </h1>
-            <p className="font-display h1-hero heading-gradient">
-              {"\n"}
-            </p>
-          </div>
 
-          <p
-            className="text-xl md:text-[22px] font-medium text-foreground leading-relaxed max-w-2xl mx-auto opacity-0 animate-fade-up"
-            style={{ animationDelay: "300ms", animationFillMode: "forwards" }}
-          >
+          <p className="max-w-xl text-base font-medium leading-relaxed text-muted-foreground lg:text-lg">
             Somos um Ecossistema de Soluções para SaaS, desde o Desenvolvimento de Ideias e MVP para Saas que estão começando, até a Escala de SaaS que faturam mais de R$100 mil por mês.
           </p>
-
-          <div
-            className="flex justify-center pt-4 opacity-0 animate-fade-up"
-            style={{ animationDelay: "400ms", animationFillMode: "forwards" }}
-          >
-            <ShinyButton onClick={() => setIsFormOpen(true)} className="group">
-              Quero Acelerar Meu SaaS
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </ShinyButton>
-          </div>
         </div>
-      </div>
 
-      <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="font-display text-xl font-bold text-center">
+        <div id="hero-contato" className="min-w-0 scroll-mt-28 border-t border-border pt-8 md:border-t-0 md:border-l md:pt-0 md:pl-8 lg:pl-10">
+          <div className="mb-6 space-y-2">
+            <h2 className="font-display text-2xl font-bold leading-snug text-foreground">
               Fale com um Especialista
-            </DialogTitle>
-            <p className="text-muted-foreground text-sm text-center">
+            </h2>
+            <p className="text-sm text-muted-foreground">
               Receba um diagnóstico estratégico gratuito
             </p>
-          </DialogHeader>
-          <ContactForm onSuccess={() => setIsFormOpen(false)} />
-        </DialogContent>
-      </Dialog>
+          </div>
+          <ContactForm />
+        </div>
+      </div>
     </section>
   );
 };

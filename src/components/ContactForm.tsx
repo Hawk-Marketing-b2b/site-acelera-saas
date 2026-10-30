@@ -180,7 +180,7 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
           required
           value={formData.segmento}
           onChange={handleChange}
-          className={`${inputClasses} appearance-none pr-10`}
+          className={`${inputClasses} min-w-0 appearance-none pr-10 text-xs lg:text-sm`}
         >
           <option value="" disabled>Qual é o segmento do seu SaaS?*</option>
           <option value="erp">ERP / Gestão</option>
@@ -199,7 +199,7 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
           required
           value={formData.receita}
           onChange={handleChange}
-          className={`${inputClasses} appearance-none pr-10`}
+          className={`${inputClasses} min-w-0 appearance-none pr-10 text-xs lg:text-sm`}
         >
           <option value="" disabled>Qual sua receita recorrente mensal?*</option>
           <option value="ate-50k">Até R$ 50mil</option>
