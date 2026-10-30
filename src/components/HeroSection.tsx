@@ -35,10 +35,10 @@ const HeroSection = () => {
             style={{ animationDelay: "200ms", animationFillMode: "forwards" }}
           >
             <h1 className="font-display h1-hero heading-gradient">
-              Acelere as Vendas do seu SaaS
+              Dono de SaaS, você NÃO precisa de uma Agência de Marketing.
             </h1>
             <p className="font-display h1-hero heading-gradient">
-              e Domine o Mercado
+              {"\n"}
             </p>
           </div>
 
