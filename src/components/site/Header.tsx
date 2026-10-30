@@ -181,7 +181,7 @@ export function Header() {
       {/* Painel mobile */}
       <div
         id="menu-mobile"
-        className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-out lg:hidden ${
+        className={`relative z-10 overflow-hidden transition-[max-height,opacity] duration-300 ease-out lg:hidden ${
           menuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
