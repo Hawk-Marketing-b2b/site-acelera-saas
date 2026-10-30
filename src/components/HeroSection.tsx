@@ -34,16 +34,16 @@ const HeroSection = () => {
             className="space-y-4 opacity-0 animate-fade-up"
             style={{ animationDelay: "200ms", animationFillMode: "forwards" }}
           >
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight heading-gradient">
+            <h1 className="font-display h1-hero heading-gradient">
               Acelere as Vendas do seu SaaS
             </h1>
-            <p className="font-display text-3xl md:text-4xl lg:text-5xl font-bold heading-gradient">
+            <p className="font-display h1-hero heading-gradient">
               e Domine o Mercado
             </p>
           </div>
 
           <p
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto opacity-0 animate-fade-up"
+            className="text-xl md:text-[22px] font-medium text-foreground leading-relaxed max-w-2xl mx-auto opacity-0 animate-fade-up"
             style={{ animationDelay: "300ms", animationFillMode: "forwards" }}
           >
             Geramos demanda qualificada para empresas de software B2B com uma metodologia validada em mais de{" "}

@@ -26,15 +26,15 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <span className="inline-flex items-center rounded-full border border-border/60 bg-muted/40 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground backdrop-blur">
+        <span className="eyebrow inline-flex items-center rounded-full border border-border/60 bg-muted/40 px-4 py-1.5 text-muted-foreground backdrop-blur">
           {eyebrow}
         </span>
       )}
       <Tag
         className={cn(
-          "font-display font-extrabold leading-[1.1] tracking-tight heading-gradient-animated",
+          "font-display heading-gradient-animated",
           eyebrow && "mt-5",
-          Tag === "h2" ? "text-3xl md:text-4xl lg:text-5xl" : "text-2xl md:text-3xl",
+          Tag === "h2" ? "h2-section" : "text-2xl md:text-3xl font-extrabold leading-[1.1] tracking-tight",
         )}
       >
         {title}
