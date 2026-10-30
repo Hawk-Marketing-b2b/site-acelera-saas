@@ -1,15 +1,11 @@
-import React, { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  ChevronLeft,
-  ChevronRight,
   Monitor,
   Briefcase,
   Users,
   Zap,
   Target,
   TrendingUp,
-  ArrowRight,
 } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -36,119 +32,137 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-function ServicesSlider() {
-  const services = [
-    { icon: TrendingUp, title: "Inbound Marketing", desc: "Atraia leads qualificados com estratégias de conteúdo, SEO e nutrição que geram demanda previsível para o seu SaaS.", href: "/inbound-marketing" },
-    { icon: Target, title: "Performance", desc: "Campanhas de mídia paga otimizadas para CAC baixo e alto retorno. Google, Meta e LinkedIn com foco em resultado B2B.", href: "/performance" },
-    { icon: Monitor, title: "Web Design", desc: "Sites e landing pages de alta conversão, pensados para o mercado SaaS. Design que vende, não só impressiona.", href: "/web-design" },
-    { icon: Users, title: "Vendas", desc: "Estruture seu processo comercial com metodologia, playbooks e treinamento para fechar mais contratos recorrentes.", href: "/vendas" },
-    { icon: Briefcase, title: "Comercial", desc: "Construção e gestão de times de vendas, SDR e CS para empresas SaaS que querem escalar com previsibilidade.", href: "/comercial" },
-    { icon: Zap, title: "IA e Automação", desc: "Automatize processos, qualifique leads e escale operações com inteligência artificial aplicada ao contexto B2B SaaS.", href: "/ia-e-automacao" },
-  ] as const;
+const services = [
+  {
+    icon: TrendingUp,
+    title: "Inbound Marketing",
+    program: "Máquina de Demanda",
+    desc: "Atraia leads qualificados com estratégias de conteúdo, SEO e nutrição que geram demanda previsível para o seu SaaS.",
+    href: "/inbound-marketing",
+    items: [
+      "Conteúdo e SEO orientados a SaaS",
+      "Iscas digitais e materiais ricos",
+      "Nutrição de leads e automação",
+      "Métricas focadas em pipeline",
+    ],
+  },
+  {
+    icon: Target,
+    title: "Performance",
+    program: "Tráfego Pago B2B",
+    desc: "Campanhas de mídia paga otimizadas para CAC baixo e alto retorno. Google, Meta e LinkedIn com foco em resultado B2B.",
+    href: "/performance",
+    items: [
+      "Google, Meta e LinkedIn Ads",
+      "Otimização para CAC baixo",
+      "Remarketing e funil completo",
+      "Relatórios de retorno recorrentes",
+    ],
+  },
+  {
+    icon: Monitor,
+    title: "Web Design",
+    program: "Site que Vende",
+    desc: "Sites e landing pages de alta conversão, pensados para o mercado SaaS. Design que vende, não só impressiona.",
+    href: "/web-design",
+    items: [
+      "Sites e landing pages de conversão",
+      "Copywriting orientado a venda",
+      "Design pensado para SaaS B2B",
+      "Testes de melhoria contínua",
+    ],
+  },
+  {
+    icon: Users,
+    title: "Vendas",
+    program: "Playbook Comercial",
+    desc: "Estruture seu processo comercial com metodologia, playbooks e treinamento para fechar mais contratos recorrentes.",
+    href: "/vendas",
+    items: [
+      "Metodologia e playbook comercial",
+      "Treinamento do time de vendas",
+      "Pipeline e CRM organizados",
+      "Prospecção ativa e follow-up",
+    ],
+  },
+  {
+    icon: Briefcase,
+    title: "Comercial",
+    program: "Times de Alta Performance",
+    desc: "Construção e gestão de times de vendas, SDR e CS para empresas SaaS que querem escalar com previsibilidade.",
+    href: "/comercial",
+    items: [
+      "Construção de times de SDR e vendas",
+      "Contratação e onboarding",
+      "Gestão de rotina e metas",
+      "Previsibilidade de receita",
+    ],
+  },
+  {
+    icon: Zap,
+    title: "I.A",
+    program: "Operação com IA",
+    desc: "Automatize processos, qualifique leads e escale operações com inteligência artificial aplicada ao contexto B2B SaaS.",
+    href: "/ia-e-automacao",
+    items: [
+      "Automação de processos e rotinas",
+      "Qualificação de leads com IA",
+      "Agentes e integrações sob medida",
+      "Escala sem aumentar o time",
+    ],
+  },
+] as const;
 
-  const [active, setActive] = useState(0);
-  const prev = () => setActive((i) => (i === 0 ? services.length - 1 : i - 1));
-  const next = () => setActive((i) => (i === services.length - 1 ? 0 : i + 1));
-  const getIndex = (offset: number) => (active + offset + services.length) % services.length;
-
+function EcosystemGrid() {
   return (
-    <>
-      {/* Mobile/tablet: cards em coluna, sem slider */}
-      <div className="grid w-full grid-cols-1 gap-5 lg:hidden">
-        {services.map((s) => {
+    <div className="relative">
+      <div className="grid grid-cols-1 gap-5 pl-11 md:grid-cols-2 md:gap-6 xl:grid-cols-3 xl:pl-0 xl:pt-36">
+        {services.map((s, i) => {
           const Icon = s.icon;
           return (
             <Link
               key={s.href}
               to={s.href}
-              className="card-glass flex w-full min-w-0 flex-col gap-4 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
+              className="card-glass relative flex h-full min-w-0 flex-col gap-4 rounded-[20px] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
             >
-              <div className="grid size-12 place-items-center rounded-xl bg-gradient-button shadow-button">
-                <Icon className="size-5 text-primary-foreground" />
+              <div className="flex items-start justify-between gap-3">
+                <div className="grid size-12 shrink-0 place-items-center rounded-xl bg-gradient-button shadow-button">
+                  <Icon className="size-5 text-primary-foreground" />
+                </div>
+                <span
+                  aria-hidden="true"
+                  className="font-display text-4xl font-extrabold leading-none text-foreground/10"
+                >
+                  {`0${i + 1}`}
+                </span>
               </div>
               <div className="min-w-0">
-                <h3 className="font-display text-lg font-semibold mb-2 text-foreground">
+                <h3 className="font-display text-lg font-bold text-foreground">
                   {s.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {s.desc}
+                <p className="mt-0.5 text-sm font-semibold text-accent">
+                  {s.program}
                 </p>
               </div>
-              <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-purple-light">
-                Saiba mais <ArrowRight className="size-4" />
-              </span>
+              <p className="text-sm italic leading-relaxed text-muted-foreground">
+                {s.desc}
+              </p>
+              <ul className="mt-auto space-y-2 text-sm text-muted-foreground">
+                {s.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <span
+                      aria-hidden="true"
+                      className="mt-2 size-1.5 shrink-0 rounded-full bg-purple-light/60"
+                    />
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </Link>
           );
         })}
       </div>
-
-      {/* Desktop: slider com 3 cards */}
-      <div className="hidden lg:flex items-center justify-center gap-4">
-        <button
-          onClick={prev}
-          aria-label="Anterior"
-          className="shrink-0 z-10 grid size-12 place-items-center rounded-full border border-border/60 bg-card/60 text-muted-foreground backdrop-blur transition-all duration-200 hover:border-primary/60 hover:text-foreground hover:scale-110"
-        >
-          <ChevronLeft className="size-5" />
-        </button>
-
-        <div className="flex items-center gap-4 w-full max-w-4xl py-4">
-          {[-1, 0, 1].map((offset) => {
-            const s = services[getIndex(offset)];
-            const isCenter = offset === 0;
-            const Icon = s.icon;
-            return (
-              <Link
-                key={getIndex(offset)}
-                to={s.href}
-                className={`flex-1 min-w-0 card-glass rounded-2xl p-7 flex flex-col gap-4 transition-all duration-500 cursor-pointer ${
-                  isCenter
-                    ? "scale-105 border-primary/40 shadow-[0_4px_40px_-4px_hsl(283_76%_54%_/_0.35)] opacity-100"
-                    : "scale-95 opacity-50 hover:opacity-70"
-                }`}
-              >
-                <div
-                  className={`grid size-12 place-items-center rounded-xl transition-all duration-300 ${
-                    isCenter ? "bg-gradient-button shadow-button" : "bg-muted/60"
-                  }`}
-                >
-                  <Icon className={`size-5 ${isCenter ? "text-primary-foreground" : "text-muted-foreground"}`} />
-                </div>
-                <div>
-                  <h3
-                    className={`font-display text-lg font-semibold mb-2 ${
-                      isCenter ? "text-foreground" : "text-muted-foreground"
-                    }`}
-                  >
-                    {s.title}
-                  </h3>
-                  <p
-                    className={`text-sm leading-relaxed ${
-                      isCenter ? "text-muted-foreground" : "text-muted-foreground/50"
-                    }`}
-                  >
-                    {s.desc}
-                  </p>
-                </div>
-                {isCenter && (
-                  <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-purple-light">
-                    Saiba mais <ArrowRight className="size-4" />
-                  </span>
-                )}
-              </Link>
-            );
-          })}
-        </div>
-
-        <button
-          onClick={next}
-          aria-label="Próximo"
-          className="shrink-0 z-10 grid size-12 place-items-center rounded-full border border-border/60 bg-card/60 text-muted-foreground backdrop-blur transition-all duration-200 hover:border-primary/60 hover:text-foreground hover:scale-110"
-        >
-          <ChevronRight className="size-5" />
-        </button>
-      </div>
-    </>
+    </div>
   );
 }
 
@@ -158,8 +172,10 @@ function HomePage() {
       <Header />
       <HeroSection />
 
-      <section id="servicos" className="relative px-6 py-24 overflow-hidden">
-        <div className="mx-auto max-w-6xl">
+      <section id="servicos" className="relative overflow-hidden px-6 py-24">
+        <div aria-hidden="true" className="eco-glow-top" />
+        <div aria-hidden="true" className="eco-floor" />
+        <div className="relative mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <span className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/30 backdrop-blur-sm px-4 py-2 text-sm text-muted-foreground mb-6">
               Nossos Serviços
@@ -171,7 +187,22 @@ function HomePage() {
               Do marketing à automação — soluções integradas para acelerar suas vendas B2B.
             </p>
           </div>
-          <ServicesSlider />
+          <EcosystemGrid />
+
+          <div className="mt-16 text-center">
+            <p className="text-base text-muted-foreground">
+              Você entra no estágio em que está: ideia, primeiros clientes, tração ou escala.
+            </p>
+            <a
+              href="#contato"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-gradient-button px-8 py-3.5 text-base font-semibold text-primary-foreground shadow-button transition-transform duration-200 hover:scale-105"
+            >
+              Quero meu diagnóstico
+            </a>
+            <p className="mt-6 text-[13px] text-muted-foreground/70">
+              Grupo HardWork Company: AceleraSaaS · Hawk Marketing · NoraLabs · AtendeBot
+            </p>
+          </div>
         </div>
       </section>
 
