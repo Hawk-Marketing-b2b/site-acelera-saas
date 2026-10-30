@@ -97,6 +97,7 @@
   --shadow-button: 0 8px 24px -6px oklch(0.567 0.253 296.6 / 0.55);
   --shadow-input: 0 2px 8px -2px oklch(0 0 0 / 0.2);
   --shadow-glow: 0 0 60px -10px oklch(0.567 0.253 296.6 / 0.4);
+  --shadow-header: 0 14px 40px -28px oklch(0 0 0 / 0.9);
 }
 
 @layer base {
@@ -229,6 +230,11 @@
   .shadow-glow {
     box-shadow: var(--shadow-glow);
   }
+
+  .shadow-header {
+    box-shadow: var(--shadow-header);
+  }
+
 
   .glow-orb {
     position: absolute;
