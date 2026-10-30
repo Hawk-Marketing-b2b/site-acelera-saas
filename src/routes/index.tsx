@@ -1,12 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Monitor,
-  Briefcase,
-  Users,
-  Zap,
-  Target,
-  TrendingUp,
-} from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { Code2, Compass, Megaphone, Target } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import HeroSection from "@/components/HeroSection";
@@ -32,98 +25,78 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const services = [
+type Item = { text: string; letter?: string };
+
+const cards = [
   {
-    icon: TrendingUp,
-    title: "Inbound Marketing",
-    program: "Máquina de Demanda",
-    desc: "Atraia leads qualificados com estratégias de conteúdo, SEO e nutrição que geram demanda previsível para o seu SaaS.",
-    href: "/inbound-marketing",
+    icon: Code2,
+    number: "01",
+    title: "Desenvolvemos",
+    program: "NoraLabs",
+    phrase: "Do zero ao produto pronto pra vender",
     items: [
-      "Conteúdo e SEO orientados a SaaS",
-      "Iscas digitais e materiais ricos",
-      "Nutrição de leads e automação",
-      "Métricas focadas em pipeline",
-    ],
+      { text: "Ideação e validação do problema" },
+      { text: "Modelagem de negócio e precificação" },
+      { text: "Desenvolvimento de MVP com time de tech próprio" },
+      { text: "Resgate de SaaS travado: finalizamos o que ficou pela metade" },
+      { text: "Infraestrutura, segurança e escalabilidade" },
+    ] as Item[],
+  },
+  {
+    icon: Compass,
+    number: "02",
+    title: "Acompanhamos",
+    program: "Programa RACE",
+    phrase: "O método antes do tráfego",
+    items: [
+      { letter: "R", text: "Rota Definida: ICP, posicionamento e metas" },
+      { letter: "A", text: "Aquisição e Oferta: oferta, canais e campanhas" },
+      { letter: "C", text: "Comercial Estruturado: CRM, playbook e pipeline" },
+      { letter: "E", text: "Escala Acelerada: acelerar só o que já foi validado" },
+      { text: "Mentorias com os sócios + acesso à MRR Academy" },
+    ] as Item[],
+  },
+  {
+    icon: Megaphone,
+    number: "03",
+    title: "Aceleramos: Marketing",
+    program: "GTM Operacional",
+    phrase: "Mão na massa para gerar demanda",
+    items: [
+      { text: "Campanhas de tráfego pago (Google e Meta)" },
+      { text: "Landing pages e site que explica o que resolve" },
+      { text: "Criativos que vendem oferta, não função" },
+      { text: "Redes sociais e conteúdo de autoridade" },
+      { text: "Automação de marketing e nutrição de leads" },
+    ] as Item[],
   },
   {
     icon: Target,
-    title: "Performance",
-    program: "Tráfego Pago B2B",
-    desc: "Campanhas de mídia paga otimizadas para CAC baixo e alto retorno. Google, Meta e LinkedIn com foco em resultado B2B.",
-    href: "/performance",
+    number: "04",
+    title: "Aceleramos: Vendas",
+    program: "GTM Operacional",
+    phrase: "Processo que transforma lead em MRR",
     items: [
-      "Google, Meta e LinkedIn Ads",
-      "Otimização para CAC baixo",
-      "Remarketing e funil completo",
-      "Relatórios de retorno recorrentes",
-    ],
-  },
-  {
-    icon: Monitor,
-    title: "Web Design",
-    program: "Site que Vende",
-    desc: "Sites e landing pages de alta conversão, pensados para o mercado SaaS. Design que vende, não só impressiona.",
-    href: "/web-design",
-    items: [
-      "Sites e landing pages de conversão",
-      "Copywriting orientado a venda",
-      "Design pensado para SaaS B2B",
-      "Testes de melhoria contínua",
-    ],
-  },
-  {
-    icon: Users,
-    title: "Vendas",
-    program: "Playbook Comercial",
-    desc: "Estruture seu processo comercial com metodologia, playbooks e treinamento para fechar mais contratos recorrentes.",
-    href: "/vendas",
-    items: [
-      "Metodologia e playbook comercial",
-      "Treinamento do time de vendas",
-      "Pipeline e CRM organizados",
-      "Prospecção ativa e follow-up",
-    ],
-  },
-  {
-    icon: Briefcase,
-    title: "Comercial",
-    program: "Times de Alta Performance",
-    desc: "Construção e gestão de times de vendas, SDR e CS para empresas SaaS que querem escalar com previsibilidade.",
-    href: "/comercial",
-    items: [
-      "Construção de times de SDR e vendas",
-      "Contratação e onboarding",
-      "Gestão de rotina e metas",
-      "Previsibilidade de receita",
-    ],
-  },
-  {
-    icon: Zap,
-    title: "I.A",
-    program: "Operação com IA",
-    desc: "Automatize processos, qualifique leads e escale operações com inteligência artificial aplicada ao contexto B2B SaaS.",
-    href: "/ia-e-automacao",
-    items: [
-      "Automação de processos e rotinas",
-      "Qualificação de leads com IA",
-      "Agentes e integrações sob medida",
-      "Escala sem aumentar o time",
-    ],
+      { text: "Implantação e auditoria de CRM" },
+      { text: "Critérios de qualificação: MQL, SQL e SAL" },
+      { text: "Script de vendas e playbook comercial" },
+      { text: "Cadência de abordagem e follow-up" },
+      { text: "Dashboard de CAC, conversão, churn e LTV/CAC" },
+      { text: "Acompanhamento de rotina e metas do time" },
+    ] as Item[],
   },
 ] as const;
 
 function EcosystemGrid() {
   return (
     <div className="relative">
-      <div className="grid grid-cols-1 gap-5 pl-11 md:grid-cols-2 md:gap-6 xl:grid-cols-3 xl:pl-0 xl:pt-36">
-        {services.map((s, i) => {
-          const Icon = s.icon;
+      <div className="grid grid-cols-1 gap-5 pl-11 md:grid-cols-2 md:gap-6 xl:grid-cols-4 xl:pl-0 xl:pt-36">
+        {cards.map((card) => {
+          const Icon = card.icon;
           return (
-            <Link
-              key={s.href}
-              to={s.href}
-              className="card-glass relative flex h-full min-w-0 flex-col gap-4 rounded-[20px] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
+            <div
+              key={card.number}
+              className="card-glass relative flex h-full min-w-0 flex-col gap-4 rounded-[20px] p-6"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="grid size-12 shrink-0 place-items-center rounded-xl bg-gradient-button shadow-button">
@@ -133,32 +106,38 @@ function EcosystemGrid() {
                   aria-hidden="true"
                   className="font-display text-4xl font-extrabold leading-none text-foreground/10"
                 >
-                  {`0${i + 1}`}
+                  {card.number}
                 </span>
               </div>
               <div className="min-w-0">
                 <h3 className="font-display text-lg font-bold text-foreground">
-                  {s.title}
+                  {card.title}
                 </h3>
                 <p className="mt-0.5 text-sm font-semibold text-accent">
-                  {s.program}
+                  {card.program}
                 </p>
               </div>
               <p className="text-sm italic leading-relaxed text-muted-foreground">
-                {s.desc}
+                {card.phrase}
               </p>
-              <ul className="mt-auto space-y-2 text-sm text-muted-foreground">
-                {s.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <span
-                      aria-hidden="true"
-                      className="mt-2 size-1.5 shrink-0 rounded-full bg-purple-light/60"
-                    />
-                    <span className="leading-relaxed">{item}</span>
+              <ul className="mt-auto space-y-2.5 text-sm text-muted-foreground">
+                {card.items.map((item) => (
+                  <li key={item.text} className="flex items-start gap-2.5">
+                    {item.letter ? (
+                      <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-md bg-gradient-button text-[10px] font-bold text-primary-foreground">
+                        {item.letter}
+                      </span>
+                    ) : (
+                      <span
+                        aria-hidden="true"
+                        className="mt-2 size-1.5 shrink-0 rounded-full bg-purple-light/60"
+                      />
+                    )}
+                    <span className="leading-relaxed">{item.text}</span>
                   </li>
                 ))}
               </ul>
-            </Link>
+            </div>
           );
         })}
       </div>
@@ -177,14 +156,17 @@ function HomePage() {
         <div aria-hidden="true" className="eco-floor" />
         <div className="relative mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/30 backdrop-blur-sm px-4 py-2 text-sm text-muted-foreground mb-6">
-              Nossos Serviços
-            </span>
-            <h2 className="h2-section heading-gradient mb-4">
-              Tudo que seu SaaS precisa para crescer
+            <p className="eyebrow text-[13px] text-accent">
+              Do código à receita recorrente
+            </p>
+            <h2 className="h2-section mt-5">
+              <span className="block text-foreground">
+                Tudo o que vem antes do tráfego.
+              </span>
+              <span className="block text-gradient">E o tráfego também.</span>
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Do marketing à automação — soluções integradas para acelerar suas vendas B2B.
+            <p className="mt-5 text-lg text-muted-foreground max-w-2xl mx-auto">
+              Um ecossistema completo para levar seu SaaS da ideia à receita recorrente.
             </p>
           </div>
           <EcosystemGrid />
