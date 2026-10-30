@@ -208,7 +208,7 @@ export function Header() {
               setMenuOpen(false);
               open();
             }}
-            className="mt-5 w-full justify-center"
+            className="mt-6 w-full justify-center"
           >
             Falar com Especialista
           </ShinyButton>
@@ -221,13 +221,6 @@ export function Header() {
         }`}
       />
 
-      {menuOpen && (
-        <div
-          onClick={() => setMenuOpen(false)}
-          className="fixed inset-x-0 top-16 bottom-0 bg-background/70 backdrop-blur-sm lg:hidden"
-          aria-hidden="true"
-        />
-      )}
     </header>
   );
 }
