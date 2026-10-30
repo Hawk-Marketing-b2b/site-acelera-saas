@@ -42,8 +42,8 @@
   --color-brand-pink: var(--brand-pink);
   --color-live: var(--live);
 
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
@@ -171,24 +171,31 @@
   }
 
   .home-hero-title {
-    font-size: 40px;
+    font-size: 46px;
     font-weight: 800;
-    line-height: 1.18;
-    letter-spacing: 0;
-    padding-block: 0.12em;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    padding-block: 0.18em;
     overflow-wrap: break-word;
   }
 
   @media (min-width: 1024px) {
     .home-hero-title {
-      font-size: 52px;
+      font-size: 64px;
     }
   }
 
   @media (min-width: 1280px) {
     .home-hero-title {
-      font-size: 60px;
+      font-size: 78px;
     }
+  }
+
+  .text-gradient-pink {
+    background: linear-gradient(90deg, #b043e0 0%, #ec4899 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .eyebrow {

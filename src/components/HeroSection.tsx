@@ -16,8 +16,11 @@ const HeroSection = () => {
             </span>
           </div>
 
-            <h1 className="home-hero-title font-display heading-gradient">
-              Dono de SaaS, você NÃO precisa de uma Agência de Marketing.
+            <h1 className="home-hero-title font-display text-foreground">
+              Dono de SaaS, você{" "}
+              <span className="text-gradient-pink">NÃO</span>{" "}
+              <span className="text-accent">precisa</span> de uma Agência de
+              Marketing.
             </h1>
 
           <p className="max-w-xl text-base font-medium leading-relaxed text-muted-foreground lg:text-lg">
