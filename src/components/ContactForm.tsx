@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { toast } from "sonner";
+import { useNavigate } from "@tanstack/react-router";
 import { reportLead, trackingPermitted } from "@/lib/tracking";
 
 interface ContactFormProps {
@@ -28,8 +29,8 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
     whatsapp: "",
     site: "",
     instagram: "",
-    segmento: "",
-    receita: "",
+    faturamento: "",
+    usuarios: "",
   });
   const [utmData, setUtmData] = useState({
     utm_source: "",
@@ -39,6 +40,7 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
     utm_medium: "",
     referrer: "",
   });
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [emailError, setEmailError] = useState("");
 
@@ -62,8 +64,8 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
         whatsapp: formData.whatsapp,
         site: formData.site,
         instagram: formData.instagram,
-        segmento: formData.segmento,
-        receita: formData.receita,
+        faturamento: formData.faturamento,
+        usuarios: formData.usuarios,
         utm_source: utmData.utm_source,
         utm_campaign: utmData.utm_campaign,
         utm_content: utmData.utm_content,
@@ -89,6 +91,7 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
       });
 
       onSuccess?.();
+      navigate({ to: "/obrigado" });
     } catch (error) {
       console.error("Erro ao enviar formulário:", error);
       toast.error("Erro ao enviar", {
@@ -189,9 +192,9 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
 
       <div className="relative">
         <select
-          name="segmento"
+          name="faturamento"
           required
-          value={formData.segmento}
+          value={formData.faturamento}
           onChange={handleChange}
           className={`${inputClasses} min-w-0 appearance-none pr-10 text-xs lg:text-sm`}
         >
@@ -209,9 +212,9 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
 
       <div className="relative">
         <select
-          name="receita"
+          name="usuarios"
           required
-          value={formData.receita}
+          value={formData.usuarios}
           onChange={handleChange}
           className={`${inputClasses} min-w-0 appearance-none pr-10 text-xs lg:text-sm`}
         >
