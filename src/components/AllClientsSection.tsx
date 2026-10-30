@@ -11,7 +11,7 @@ const AllClientsSection = () => {
           transition={{ duration: 0.5, ease: "easeOut" }}
           viewport={{ once: true, margin: "-50px" }}
         >
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-center heading-gradient mb-4 md:mb-5">
+          <h2 className="h2-section text-center heading-gradient mb-4 md:mb-5">
             Alguns dos SaaS atendidos
           </h2>
           <div className="relative overflow-hidden rounded-xl">

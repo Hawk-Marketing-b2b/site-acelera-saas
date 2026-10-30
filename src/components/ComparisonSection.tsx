@@ -39,7 +39,7 @@ const ComparisonSection = () => {
             <Award className="w-4 h-4 text-primary" />
             <span className="text-sm text-primary">Nossos Diferenciais</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient mb-6">
+          <h2 className="h2-section heading-gradient mb-6">
             Por que escolher o Acelera SaaS?
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

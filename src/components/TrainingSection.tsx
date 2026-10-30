@@ -41,7 +41,7 @@ const TrainingSection = () => {
             <Target className="w-4 h-4 text-primary" />
             <span className="text-sm text-primary">Capacitação de Equipes</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient mb-6">
+          <h2 className="h2-section heading-gradient mb-6">
             Treinamento Comercial & CS
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

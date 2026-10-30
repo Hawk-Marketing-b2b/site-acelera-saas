@@ -136,7 +136,7 @@ function InboundMarketingPage() {
             Inbound Marketing para SaaS
           </span>
 
-          <h1 className="heading-gradient font-sans text-4xl font-extrabold leading-tight tracking-tight md:text-5xl lg:text-6xl text-balance mt-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <h1 className="heading-gradient h1-hero text-balance mt-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
             Agência de Inbound Marketing
             <br className="hidden md:block" /> para SaaS
           </h1>
@@ -437,7 +437,7 @@ function InboundMarketingPage() {
                 Vamos acelerar seu SaaS
               </div>
 
-              <h2 className="heading-gradient-animated mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
+              <h2 className="heading-gradient-animated mt-6 font-display h2-section">
                 Quer transformar seu marketing em uma máquina de geração de leads?
               </h2>
 

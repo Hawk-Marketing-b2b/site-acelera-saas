@@ -48,7 +48,7 @@ const TestimonialsSection = () => {
             <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
             <span className="text-sm text-primary">Depoimentos</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient mb-6">
+          <h2 className="h2-section heading-gradient mb-6">
             O que nossos clientes dizem
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">

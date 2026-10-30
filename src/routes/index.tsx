@@ -164,7 +164,7 @@ function HomePage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/30 backdrop-blur-sm px-4 py-2 text-sm text-muted-foreground mb-6">
               Nossos Serviços
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold heading-gradient mb-4">
+            <h2 className="h2-section heading-gradient mb-4">
               Tudo que seu SaaS precisa para crescer
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
