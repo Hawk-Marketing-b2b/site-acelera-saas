@@ -208,7 +208,7 @@ export function Header() {
               setMenuOpen(false);
               open();
             }}
-            className="mt-6 w-full justify-center"
+            className="mt-auto w-full justify-center"
           >
             Falar com Especialista
           </ShinyButton>
