@@ -9,5 +9,5 @@
 # Cabeçalho
 - [x] Refazer o cabeçalho: símbolo + "Acelera SaaS", navegação por seções com destaque da seção ativa, CTA gradiente.
 - [x] Menu do celular em tela cheia, com o formulário abrindo por dentro dele; verificado no navegador.
-- [ ] Colocar o formulário ao lado do texto inicial, corrigir letras cortadas e contraste do selo, e remover o fundo animado.
+- [x] Colocar o formulário ao lado do texto inicial, corrigir letras cortadas e contraste do selo, e remover o fundo animado.
 - [ ] Verificar o formulário na página e no diálogo, as tags existentes e a apresentação em telas pequenas e grandes.
