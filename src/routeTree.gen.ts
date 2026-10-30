@@ -14,6 +14,7 @@ import { Route as SplatRouteImport } from './routes/$'
 import { Route as ComercialRouteImport } from './routes/comercial'
 import { Route as IaEAutomacaoRouteImport } from './routes/ia-e-automacao'
 import { Route as InboundMarketingRouteImport } from './routes/inbound-marketing'
+import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as VendasRouteImport } from './routes/vendas'
@@ -44,6 +45,11 @@ const InboundMarketingRoute = InboundMarketingRouteImport.update({
   path: '/inbound-marketing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ObrigadoRoute = ObrigadoRouteImport.update({
+  id: '/obrigado',
+  path: '/obrigado',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PerformanceRoute = PerformanceRouteImport.update({
   id: '/performance',
   path: '/performance',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/comercial': typeof ComercialRoute
   '/ia-e-automacao': typeof IaEAutomacaoRoute
   '/inbound-marketing': typeof InboundMarketingRoute
+  '/obrigado': typeof ObrigadoRoute
   '/performance': typeof PerformanceRoute
   '/privacidade': typeof PrivacidadeRoute
   '/vendas': typeof VendasRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/comercial': typeof ComercialRoute
   '/ia-e-automacao': typeof IaEAutomacaoRoute
   '/inbound-marketing': typeof InboundMarketingRoute
+  '/obrigado': typeof ObrigadoRoute
   '/performance': typeof PerformanceRoute
   '/privacidade': typeof PrivacidadeRoute
   '/vendas': typeof VendasRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/comercial': typeof ComercialRoute
   '/ia-e-automacao': typeof IaEAutomacaoRoute
   '/inbound-marketing': typeof InboundMarketingRoute
+  '/obrigado': typeof ObrigadoRoute
   '/performance': typeof PerformanceRoute
   '/privacidade': typeof PrivacidadeRoute
   '/vendas': typeof VendasRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/comercial'
     | '/ia-e-automacao'
     | '/inbound-marketing'
+    | '/obrigado'
     | '/performance'
     | '/privacidade'
     | '/vendas'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/comercial'
     | '/ia-e-automacao'
     | '/inbound-marketing'
+    | '/obrigado'
     | '/performance'
     | '/privacidade'
     | '/vendas'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/comercial'
     | '/ia-e-automacao'
     | '/inbound-marketing'
+    | '/obrigado'
     | '/performance'
     | '/privacidade'
     | '/vendas'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   ComercialRoute: typeof ComercialRoute
   IaEAutomacaoRoute: typeof IaEAutomacaoRoute
   InboundMarketingRoute: typeof InboundMarketingRoute
+  ObrigadoRoute: typeof ObrigadoRoute
   PerformanceRoute: typeof PerformanceRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
   VendasRoute: typeof VendasRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InboundMarketingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/obrigado': {
+      id: '/obrigado'
+      path: '/obrigado'
+      fullPath: '/obrigado'
+      preLoaderRoute: typeof ObrigadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/performance': {
       id: '/performance'
       path: '/performance'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComercialRoute: ComercialRoute,
   IaEAutomacaoRoute: IaEAutomacaoRoute,
   InboundMarketingRoute: InboundMarketingRoute,
+  ObrigadoRoute: ObrigadoRoute,
   PerformanceRoute: PerformanceRoute,
   PrivacidadeRoute: PrivacidadeRoute,
   VendasRoute: VendasRoute,
