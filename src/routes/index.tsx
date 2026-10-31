@@ -32,7 +32,7 @@ const cards = [
     icon: Code2,
     number: "01",
     title: "Desenvolvemos",
-    program: "NoraLabs",
+    program: "Nós tiramos seu SaaS do papel!",
     phrase: "Do zero ao produto pronto pra vender",
     items: [
       { text: "Ideação e validação do problema" },
@@ -46,7 +46,7 @@ const cards = [
     icon: Compass,
     number: "02",
     title: "Acompanhamos",
-    program: "Programa RACE",
+    program: "Pegamos na sua mão lado a lado",
     phrase: "O método antes do tráfego",
     items: [
       { letter: "R", text: "Rota Definida: ICP, posicionamento e metas" },
@@ -60,7 +60,7 @@ const cards = [
     icon: Megaphone,
     number: "03",
     title: "Aceleramos: Marketing",
-    program: "GTM Operacional",
+    program: "Lançamento, aceleração de Marketing",
     phrase: "Mão na massa para gerar demanda",
     items: [
       { text: "Campanhas de tráfego pago (Google e Meta)" },
@@ -74,7 +74,7 @@ const cards = [
     icon: Target,
     number: "04",
     title: "Aceleramos: Vendas",
-    program: "GTM Operacional",
+    program: "Escala comercial",
     phrase: "Processo que transforma lead em MRR",
     items: [
       { text: "Implantação e auditoria de CRM" },
