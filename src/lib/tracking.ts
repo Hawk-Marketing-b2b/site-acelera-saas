@@ -99,5 +99,4 @@ export function reportLead(permittedAtSubmission: boolean) {
   if (!canReportLead(permittedAtSubmission, trackingPermitted())) return;
   const id = crypto.randomUUID();
   window.dataLayer?.push({ event: "Lead", form_id: "contact", event_id: id });
-  window.fbq?.("track", "Lead", {}, { eventID: id });
 }
